@@ -1,19 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Contact</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact — USIU Events</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script type="module" defer src="assets/JS/script.js"></script>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-    <h1>USIU Events (Logo)</h1>
-    <h2>Contact — Get in touch</h2>
-    <!-- Contact intro, form, details, and map would go here -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+      <div class="brand"><a href="index.html"><svg width="24" height="24" viewBox="0 0 24 24" aria-label="USIU Events logo" role="img" focusable="false"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>USIU Events</a></div>
+      <nav id="primary-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="EventsListView.html">Events</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+          <li><a href="aboutPage.html">About</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main">
+      <section>
+        <h1>Contact</h1>
+        <h2>Get in touch</h2>
+      </section>
+      <section>
+        <h3>Registration Form</h3>
+        <div id="form-status" role="status" aria-live="polite"></div>
+        <form id="contact-form" data-enhanced="true">
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input id="fullName" name="fullName" type="text" required minlength="2" placeholder="Jane Doe">
+            <p class="hint" data-hint-for="fullName" hidden></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="jane@example.com">
+            <p class="hint" data-hint-for="email" hidden></p>
+          </div>
+          <div class="field">
+            <label for="event">Event name</label>
+            <input id="event" name="event" type="text" required minlength="3" placeholder="Startup Mixer">
+            <p class="hint" data-hint-for="event" hidden></p>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required minlength="10" rows="4" placeholder="Your note..."></textarea>
+            <p class="hint" data-hint-for="message" hidden></p>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <small>&copy; USIU Events</small>
+    </footer>
   </body>
 </html>

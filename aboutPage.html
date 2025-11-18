@@ -1,19 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>About Events</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About — USIU Events</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script type="module" defer src="assets/JS/script.js"></script>
   </head>
   <body>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <h1>USIU Events (Logo)</h1>
-    <h2>About — Events Team & Info</h2>
-    <!-- Team, submit event, and FAQs would go here -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <header>
+      <div class="brand"><a href="index.html"><svg width="24" height="24" viewBox="0 0 24 24" aria-label="USIU Events logo" role="img" focusable="false"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>USIU Events</a></div>
+      <nav id="primary-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="EventsListView.html">Events</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+          <li><a href="aboutPage.html" aria-current="page">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main">
+      <section>
+        <h1>About</h1>
+        <h2>Events Team & Info</h2>
+      </section>
+      <section>
+        <h3>FAQs</h3>
+        <details>
+          <summary>How do I register for an event?</summary>
+          <p>Use the registration form on the Contact page. You'll receive a confirmation on screen.</p>
+        </details>
+        <details>
+          <summary>Can I submit a new event?</summary>
+          <p>Yes. Share details via the Contact form and our team will review.</p>
+        </details>
+        <details>
+          <summary>Is the site accessible?</summary>
+          <p>We include skip links, focus styles, alt text, and semantic HTML across pages.</p>
+        </details>
+      </section>
+    </main>
+    <footer>
+      <small>&copy; USIU Events</small>
+    </footer>
   </body>
 </html>
