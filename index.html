@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>USIU Events</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <script type="module" defer src="assets/JS/script.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>USIU Events Hub</title>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" defer src="./JS/script.js"></script>
   </head>
+
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
-    <header>
-      <div class="brand"><a href="index.html" aria-current="page"><svg width="24" height="24" viewBox="0 0 24 24" aria-label="USIU Events logo" role="img" focusable="false"><circle cx="12" cy="12" r="10" fill="currentColor"/></svg>USIU Events</a></div>
-      <nav id="primary-nav">
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html">
+          <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" alt="USIU-Africa">
+          USIU Events Hub
+        </a>
+      </div>
+
+      <nav class="primary-nav">
         <ul>
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="EventsListView.html">Events</a></li>
@@ -20,18 +30,183 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
+
+      <div class="auth-buttons">
+        <a href="#" class="login-btn">Login / Register</a>
+      </div>
     </header>
+
+    <!-- Main -->
     <main id="main">
-      <section>
-        <h1>USIU Events</h1>
-        <h2>Discover Upcoming Campus Events</h2>
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>Discover Campus Events</h1>
+        <p>
+          Your one-stop platform to explore, register, and stay updated on all
+          university events. Never miss an important event again.
+        </p>
+
+        <div class="search-bar">
+          <input
+            type="text"
+            placeholder="Search events..."
+            aria-label="Search events"
+          />
+        </div>
       </section>
-      <section>
-        <h3>Upcoming Events</h3>
+
+      <!-- Stats Section -->
+      <section class="stats">
+        <div class="stat-box">
+          <h2>24</h2>
+          <p>Upcoming Events</p>
+        </div>
+
+        <div class="stat-box">
+          <h2>1,250+</h2>
+          <p>Registered Students</p>
+        </div>
+
+        <div class="stat-box">
+          <h2>48</h2>
+          <p>Events This Semester</p>
+        </div>
+      </section>
+
+      <!-- Featured Events Section -->
+      <section class="featured-events">
+        <div class="section-header">
+          <h3>Featured Events</h3>
+          <a href="EventsListView.html" class="view-all-btn">View All Events</a>
+        </div>
+
+        <div class="event-grid">
+          <!-- Event card -->
+          <article class="event-card">
+            <div class="event-image"></div>
+            <div class="event-content">
+              <h4>Annual Research Symposium</h4>
+
+              <ul class="event-meta">
+                <li><img src="./assets/icons/calendar icon.svg" alt=""> March 15, 2025</li>
+                <li><img src="./assets/icons/time icon.svg" alt=""> 9:00 AM</li>
+                <li><img src="./assets/icons/location icon.svg" alt=""> Main Campus</li>
+              </ul>
+
+              <button class="register-btn">Register</button>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-image"></div>
+            <div class="event-content">
+              <h4>International Students Day</h4>
+
+              <ul class="event-meta">
+                <li><img src="./assets/icons/calendar icon.svg" alt=""> March 20, 2025</li>
+                <li><img src="./assets/icons/time icon.svg" alt=""> 10:00 AM</li>
+                <li><img src="./assets/icons/location icon.svg" alt=""> Main Campus</li>
+              </ul>
+
+              <button class="register-btn">Register</button>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-image"></div>
+            <div class="event-content">
+              <h4>Career Fair 2025</h4>
+
+              <ul class="event-meta">
+                <li><img src="./assets/icons/calendar icon.svg" alt=""> March 25, 2025</li>
+                <li><img src="./assets/icons/time icon.svg" alt=""> 8:00 AM</li>
+                <li><img src="./assets/icons/location icon.svg" alt=""> Main Campus</li>
+              </ul>
+
+              <button class="register-btn">Register</button>
+            </div>
+          </article>
+
+          <article class="event-card">
+            <div class="event-image"></div>
+            <div class="event-content">
+              <h4>Spring Sports Tournament</h4>
+
+              <ul class="event-meta">
+                <li><img src="./assets/icons/calendar icon.svg" alt=""> April 2, 2025</li>
+                <li><img src="./assets/icons/time icon.svg" alt=""> 2:00 PM</li>
+                <li><img src="./assets/icons/location icon.svg" alt=""> Main Campus</li>
+              </ul>
+
+              <button class="register-btn">Register</button>
+            </div>
+          </article>
+        </div>
       </section>
     </main>
-    <footer>
-      <small>&copy; USIU Events</small>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-main">
+        <!-- Brand / Description -->
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <svg width="28" height="28" viewBox="0 0 24 24">
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                fill="currentColor"
+                opacity="0.1"
+              />
+            </svg>
+            <span>USIU Events Hub</span>
+          </div>
+          <p class="footer-brand-text">
+            Your central platform for all university events and activities.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutPage.html">About Us</a></li>
+            <li><a href="EventsListView.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Follow Us -->
+        <div class="footer-column">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook" class="social-icon">f</a>
+            <a href="#" aria-label="Twitter" class="social-icon">t</a>
+            <a href="#" aria-label="Instagram" class="social-icon">◎</a>
+            <a href="#" aria-label="LinkedIn" class="social-icon">in</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+
+      <div class="footer-bottom">
+        <small>© 2025 USIU Events Hub. All rights reserved.</small>
+      </div>
     </footer>
   </body>
 </html>
