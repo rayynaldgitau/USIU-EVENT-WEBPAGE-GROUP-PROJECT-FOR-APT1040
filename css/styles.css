@@ -198,7 +198,6 @@ a img {
     height: auto;
     padding: 0;
     margin: auto;
-    background: #fff;
     border: none;
     border-radius: 0 0 7px 7px;
 
@@ -525,23 +524,32 @@ main {
 
 .footer-brand-logo {
   display: inline-flex;
-  align-items: center;
+  align-items: initial;
+  position: inherit;
+  right: 50px;
   gap: 0.6rem;
   font-weight: 600;
   font-size: 1rem;
   color: #111827;
   margin-bottom: 0.4rem;
 }
+.footer-brand-logo img{
+  position: relative;
+  right: 60px;
+}
 
-.footer-brand-logo svg {
-  color: #cbd5f5;
+.footer-brand-logo span {
+  position: relative;
+  right: 60px;
 }
 
 .footer-brand-text {
   max-width: 260px;
   color: #6b7280;
   line-height: 1.6;
+  
 }
+
 
 .footer-column h4 {
   font-size: 0.9rem;
@@ -575,13 +583,13 @@ main {
   flex-wrap: wrap;
   gap: 0.6rem;
   margin-top: 0.25rem;
+  position: relative;
+  left: 35px;
 }
 
 .social-icon {
   width: 38px;
   height: 38px;
-  border-radius: 0.35rem;
-  border: 1px solid #d1d5db;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -711,6 +719,15 @@ main {
 
   .event-grid {
     grid-template-columns: 1fr;
+  }
+
+  .footer-brand-logo img{
+    position: relative;
+    right: 0;
+  }
+  .footer-brand-logo span {
+    position: relative;
+    right: 0;
   }
 
 }
