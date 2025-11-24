@@ -731,3 +731,266 @@ main {
   }
 
 }
+/* ===========================
+   Contact page layout
+   =========================== */
+
+.contact-page {
+  background-color: #f5f7fb;
+}
+
+/* Generic container for this page */
+.contact-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Page heading */
+.contact-hero {
+  padding: 3rem 0 1rem;
+}
+
+.contact-hero h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.contact-hero p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Main grid (form + sidebar) */
+.contact-main {
+  padding-bottom: 3rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(260px, 1fr);
+  gap: 2rem;
+}
+
+/* Card styles */
+.contact-card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 0 0 1px #e5e7eb;
+}
+
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 1.25rem;
+  color: #111827;
+}
+
+/* Form */
+.contact-form-card {
+  align-self: start;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+  color: #4b5563;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid #e5e7eb;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.9rem;
+  background-color: #f9fafb;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+  background-color: #ffffff;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Status text from JS */
+#form-status {
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Submit button */
+.contact-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background-color: #111827;
+  color: #ffffff;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.contact-submit-btn:hover {
+  background-color: #0f172a;
+}
+
+.contact-submit-btn:active {
+  transform: translateY(1px);
+}
+
+.contact-submit-btn .btn-icon {
+  font-size: 0.85rem;
+}
+
+/* Sidebar */
+.contact-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Contact info rows */
+.info-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.info-icon {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  
+}
+
+.info-content {
+  line-height: 1.35;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.info-value {
+  color: #6b7280;
+}
+
+.info-value a,
+.info-value a:visited {
+  color: inherit;
+}
+
+/* Office hours */
+.office-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #4b5563;
+  padding: 0.2rem 0;
+}
+
+/* Quick links */
+.quick-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.83rem;
+}
+
+.quick-links-list li + li {
+  margin-top: 0.3rem;
+}
+
+.quick-links-list a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.quick-links-list a:hover {
+  text-decoration: underline;
+}
+
+/* Map card */
+/* Map card */
+.contact-map-section {
+  padding-bottom: 3rem;
+}
+
+.map-card {
+  margin-top: 0.5rem;
+}
+
+/* Keep the light background around the map card */
+.map-placeholder {
+  margin-top: 1rem;
+}
+
+/* Responsive iframe container */
+.map-embed-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 45%;   /* approx. 16:9 aspect ratio */
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #f3f4f6;
+}
+
+.map-embed-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .field-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-main,
+  .contact-map-section {
+    padding-bottom: 2rem;
+  }
+}

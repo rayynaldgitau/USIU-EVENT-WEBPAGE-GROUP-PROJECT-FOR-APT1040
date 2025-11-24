@@ -10,7 +10,8 @@
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
-    <!-- Header -->
+
+    <!-- Header (unchanged) -->
     <header class="site-header">
       <div class="brand">
         <a href="index.html">
@@ -33,40 +34,176 @@
         <a href="#" class="login-btn">Login / Register</a>
       </div>
     </header>
-    <main id="main">
-      <section>
-        <h1>Contact</h1>
-        <h2>Get in touch</h2>
+
+    <main id="main" class="contact-page">
+      <!-- Page heading -->
+      <section class="contact-hero">
+        <div class="contact-container">
+          <h1>Contact Us</h1>
+          <p>Have questions? We’d love to hear from you.</p>
+        </div>
       </section>
-      <section>
-        <h3>Registration Form</h3>
-        <div id="form-status" role="status" aria-live="polite"></div>
-        <form id="contact-form" data-enhanced="true">
-          <div class="field">
-            <label for="fullName">Full name</label>
-            <input id="fullName" name="fullName" type="text" required minlength="2" placeholder="Jane Doe">
-            <p class="hint" data-hint-for="fullName" hidden></p>
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="jane@example.com">
-            <p class="hint" data-hint-for="email" hidden></p>
-          </div>
-          <div class="field">
-            <label for="event">Event name</label>
-            <input id="event" name="event" type="text" required minlength="3" placeholder="Startup Mixer">
-            <p class="hint" data-hint-for="event" hidden></p>
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required minlength="10" rows="4" placeholder="Your note..."></textarea>
-            <p class="hint" data-hint-for="message" hidden></p>
-          </div>
-          <button type="submit">Submit</button>
-        </form>
+
+      <!-- Two-column layout: form + right sidebar -->
+      <section class="contact-main">
+        <div class="contact-container contact-grid">
+          <!-- Left: form card -->
+          <section class="contact-card contact-form-card" aria-labelledby="contact-form-heading">
+            <h2 id="contact-form-heading" class="card-title">Send Us a Message</h2>
+
+            <div id="form-status" role="status" aria-live="polite"></div>
+
+            <!-- IDs and names kept the same for the existing JS -->
+            <form id="contact-form" data-enhanced="true" novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label for="fullName">Name</label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    type="text"
+                    required
+                    minlength="2"
+                    placeholder="Your name"
+                  >
+                  <p class="hint" data-hint-for="fullName" hidden></p>
+                </div>
+
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    placeholder="your.email@usiu.ac.ke"
+                  >
+                  <p class="hint" data-hint-for="email" hidden></p>
+                </div>
+              </div>
+
+              <div class="field">
+                <!-- Keep id="event" so the JS still finds this field -->
+                <label for="event">Subject</label>
+                <input
+                  id="event"
+                  name="event"
+                  type="text"
+                  required
+                  minlength="3"
+                  placeholder="What is your message about?"
+                >
+                <p class="hint" data-hint-for="event" hidden></p>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  minlength="10"
+                  rows="5"
+                  placeholder="Tell us more about your inquiry..."
+                ></textarea>
+                <p class="hint" data-hint-for="message" hidden></p>
+              </div>
+
+              <button type="submit" class="contact-submit-btn">
+                <span class="btn-icon" aria-hidden="true">✈</span>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </section>
+
+          <!-- Right: sidebar cards -->
+          <aside class="contact-sidebar" aria-label="Contact details and links">
+            <!-- Contact information -->
+            <section class="contact-card">
+              <h2 class="card-title">Contact Information</h2>
+
+              <div class="info-row">
+                <div class="info-icon" aria-hidden="true"><img src="./assets/icons/mail.svg" alt=""></div>
+                <div class="info-content">
+                  <div class="info-label">Email</div>
+                  <a href="mailto:events@usiu.ac.ke" class="info-value">events@usiu.ac.ke</a>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <div class="info-icon" aria-hidden="true"><img src="./assets/icons/phone.svg" alt=""></div>
+                <div class="info-content">
+                  <div class="info-label">Phone</div>
+                  <a href="tel:+254123456789" class="info-value">+254 123 456 789</a>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <div class="info-icon" aria-hidden="true"><img src="./assets/icons/office.svg" alt=""></div>
+                <div class="info-content">
+                  <div class="info-label">Office</div>
+                  <div class="info-value">
+                    Student Affairs Building<br>
+                    Room 205
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Office hours -->
+            <section class="contact-card">
+              <h2 class="card-title">Office Hours</h2>
+
+              <div class="office-row">
+                <span>Monday – Friday</span>
+                <span>8:00 AM - 5:00 PM</span>
+              </div>
+              <div class="office-row">
+                <span>Saturday</span>
+                <span>9:00 AM - 1:00 PM</span>
+              </div>
+              <div class="office-row">
+                <span>Sunday</span>
+                <span>Closed</span>
+              </div>
+            </section>
+
+            <!-- Quick links -->
+            <section class="contact-card">
+              <h2 class="card-title">Quick Links</h2>
+              <ul class="quick-links-list">
+                <li><a href="#">Event Guidelines</a></li>
+                <li><a href="#">Submit Event Request</a></li>
+                <li><a href="#">Volunteer Opportunities</a></li>
+                <li><a href="#">Sponsor an Event</a></li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Map section -->
+      <section class="contact-map-section">
+        <div class="contact-container">
+          <section class="contact-card map-card">
+            <h2 class="card-title">Visit Our Campus</h2>
+            <div class="map-placeholder">
+        <div class="map-embed-wrapper">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31911.36201934723!2d36.87008410313297!3d-1.2156927018146861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f15f826d2697b%3A0x283746033cb1b5a5!2sUnited%20States%20International%20University-Africa!5e0!3m2!1sen!2ske!4v1763973040499!5m2!1sen!2ske"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+            </div>
+          </section>
+        </div>
       </section>
     </main>
-  <!-- Footer -->
+
+    <!-- Footer (unchanged) -->
     <footer class="site-footer">
       <div class="footer-main">
         <!-- Brand / Description -->
@@ -95,7 +232,6 @@
         <div class="footer-column">
           <h4>Resources</h4>
           <ul>
-            
             <li><a href="https://www.usiu.ac.ke/helpdesk/">Support</a></li>
             <li><a href="https://www.usiu.ac.ke/terms-of-use/">Privacy Policy</a></li>
             <li><a href="https://www.usiu.ac.ke/terms-of-use/">Terms of Service</a></li>
@@ -106,10 +242,18 @@
         <div class="footer-column">
           <h4>Follow Us</h4>
           <div class="social-links">
-            <a href="https://www.facebook.com/USIUAFRICA/?ref=embed_page#" aria-label="Facebook" class="social-icon"><img src="./assets/icons/facebook icon.svg"  alt=""></a>
-            <a href="https://x.com/ExperienceUSIU?s=20" aria-label="Twitter" class="social-icon"><img src="./assets/icons/twitter icon.svg" alt=""></a>
-            <a href="https://www.instagram.com/usiuafrica?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="social-icon"><img src="./assets/icons/instagram icon.svg" alt=""></a>
-            <a href="https://www.linkedin.com/school/united-states-international-university-africa/" aria-label="LinkedIn" class="social-icon"><img src="./assets/icons/linkedin icon.svg" alt=""></a>
+            <a href="https://www.facebook.com/USIUAFRICA/?ref=embed_page#" aria-label="Facebook" class="social-icon">
+              <img src="./assets/icons/facebook icon.svg" alt="">
+            </a>
+            <a href="https://x.com/ExperienceUSIU?s=20" aria-label="Twitter" class="social-icon">
+              <img src="./assets/icons/twitter icon.svg" alt="">
+            </a>
+            <a href="https://www.instagram.com/usiuafrica?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="social-icon">
+              <img src="./assets/icons/instagram icon.svg" alt="">
+            </a>
+            <a href="https://www.linkedin.com/school/united-states-international-university-africa/" aria-label="LinkedIn" class="social-icon">
+              <img src="./assets/icons/linkedin icon.svg" alt="">
+            </a>
           </div>
         </div>
       </div>
