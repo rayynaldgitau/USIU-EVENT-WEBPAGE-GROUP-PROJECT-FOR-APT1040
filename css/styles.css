@@ -85,6 +85,9 @@ nav a:focus { background: #f3f4f6; }
 
 nav a[aria-current="page"] { font-weight: 700; }
 
+
+
+
 @media (max-width: 700px) {
   #primary-nav { display: block; }
   #primary-nav ul { flex-direction: column; padding-top: var(--spacing-3); }
@@ -224,6 +227,7 @@ button {
   font-weight: 500;
   transition: background-color 0.18s ease, color 0.18s ease,
     box-shadow 0.18s ease, border-color 0.18s ease, transform 0.1s ease;
+  display: none;
 }
 
 /* Primary (dark) button */
