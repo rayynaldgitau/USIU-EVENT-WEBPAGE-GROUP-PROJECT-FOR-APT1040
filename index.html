@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>USIU Events Hub</title>
+    <!-- redirecting to the login page -->
+    <!-- <meta http-equiv="refresh" content="0; URL='loginPage.html'" /> -->
+
     <link rel="icon" type="image/png" href="https://www.usiu.ac.ke/assets/image/usiu-logo.png">
     <link rel="stylesheet" href="./css/styles.css" />
     <script type="module" defer src="./JS/script.js"></script>
@@ -31,9 +34,15 @@
         </ul>
       </nav>
 
-      <div class="auth-buttons">
-        <a href="#" class="login-btn">Login / Register</a>
-      </div>
+<div class="auth-buttons">
+  <a href="loginPage.html" class="login-btn" id="login-link">Login / Register</a>
+
+  <!-- Hidden until user logs in -->
+  <button type="button" data-logout id="logout-btn" class="login-btn" 9005>
+    Logout
+  </button>
+</div>
+
     </header>
 
     <!-- Main -->

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login — USIU Events</title>
+    <link rel="icon" type="image/png" href="https://www.usiu.ac.ke/assets/image/usiu-logo.png">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" defer src="./JS/script.js"></script>
+  </head>
+  <body data-auth-page="login">
+    <main id="main" class="auth-page">
+      <section class="auth-hero">
+        <div class="auth-container">
+          <h1>Welcome back</h1>
+          <p>Sign in to manage your event registrations and stay updated.</p>
+        </div>
+      </section>
+
+      <section class="auth-main">
+        <div class="auth-container">
+          <section class="auth-card" aria-labelledby="login-heading">
+            <h2 id="login-heading" class="card-title">Sign in to your account</h2>
+
+            <div id="auth-status-login" class="auth-status" role="status" aria-live="polite"></div>
+
+            <!-- Form hooked in script.js for Firebase sign in -->
+            <form id="login-form" data-auth="login" novalidate>
+              <div class="field">
+                <label for="login-email">Email</label>
+                <input
+                  id="login-email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                  placeholder="your.email@usiu.ac.ke"
+                >
+              </div>
+
+              <div class="field">
+                <label for="login-password">Password</label>
+                <input
+                  id="login-password"
+                  name="password"
+                  type="password"
+                  autocomplete="current-password"
+                  required
+                  minlength="6"
+                  placeholder="Enter your password"
+                >
+                  <button type="button" class="password-toggle" data-toggle-password="login-password">
+      Show
+    </button>
+              </div>
+
+              <div class="auth-inline-links">
+                <a href="forgotPassword.html" class="text-link small">Forgot your password?</a>
+              </div>
+
+              <button type="submit" class="auth-primary-btn">
+                <span>Sign In</span>
+              </button>
+
+              <p class="auth-switch">
+                Don’t have an account?
+                <a href="registerPage.html" class="text-link">Create one</a>
+              </p>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

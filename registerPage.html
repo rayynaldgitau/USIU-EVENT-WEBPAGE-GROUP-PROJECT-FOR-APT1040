@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register — USIU Events</title>
+    <link rel="icon" type="image/png" href="https://www.usiu.ac.ke/assets/image/usiu-logo.png">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" defer src="./JS/script.js"></script>
+  </head>
+  <body data-auth-page="register">
+    <main id="main" class="auth-page">
+      <section class="auth-hero">
+        <div class="auth-container">
+          <h1>Create your account</h1>
+          <p>Register to book events, save favourites, and manage your participation.</p>
+        </div>
+      </section>
+
+      <section class="auth-main">
+        <div class="auth-container">
+          <section class="auth-card" aria-labelledby="register-heading">
+            <h2 id="register-heading" class="card-title">Sign up</h2>
+
+            <div id="auth-status-register" class="auth-status" role="status" aria-live="polite"></div>
+
+            <!-- Hook this form in script.js for Firebase sign-up -->
+            <form id="register-form" data-auth="register" novalidate>
+              <div class="field-row">
+                <div class="field">
+                  <label for="reg-first-name">First name</label>
+                  <input
+                    id="reg-first-name"
+                    name="firstName"
+                    type="text"
+                    required
+                    minlength="2"
+                    placeholder="Jane"
+                    autocomplete="given-name"
+                  >
+                      <button type="button" class="password-toggle" data-toggle-password="reg-confirm-password">
+      Show
+    </button>
+                </div>
+
+                <div class="field">
+                  <label for="reg-last-name">Last name</label>
+                  <input
+                    id="reg-last-name"
+                    name="lastName"
+                    type="text"
+                    required
+                    minlength="2"
+                    placeholder="Doe"
+                    autocomplete="family-name"
+                  >
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="reg-email">USIU Email</label>
+                <input
+                  id="reg-email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="your.email@usiu.ac.ke"
+                  autocomplete="email"
+                >
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="reg-password">Password</label>
+                  <input
+                    id="reg-password"
+                    name="password"
+                    type="password"
+                    required
+                    minlength="6"
+                    placeholder="At least 6 characters"
+                    autocomplete="new-password"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="reg-confirm-password">Confirm password</label>
+                  <input
+                    id="reg-confirm-password"
+                    name="confirmPassword"
+                    type="password"
+                    required
+                    minlength="6"
+                    placeholder="Repeat password"
+                    autocomplete="new-password"
+                  >
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="reg-terms" required>
+                  <span>I agree to the <a href="https://www.usiu.ac.ke/terms-of-use/" class="text-link small">terms of service</a>.</span>
+                </label>
+              </div>
+
+              <button type="submit" class="auth-primary-btn">
+                <span>Create Account</span>
+              </button>
+
+              <p class="auth-switch">
+                Already have an account?
+                <a href="loginPage.html" class="text-link">Sign in</a>
+              </p>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
