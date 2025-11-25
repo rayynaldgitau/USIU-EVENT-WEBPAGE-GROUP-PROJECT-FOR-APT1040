@@ -15,44 +15,46 @@
   <body>
     <a class="skip-link" href="#main">Skip to main content</a>
     <!-- Header -->
-    <header class="site-header">
-      <div class="brand">
-        <a href="index.html">
-          <img
-            src="https://www.usiu.ac.ke/assets/image/usiu-logo.png"
-            alt="USIU-Africa"
-          />
-          USIU Events Hub
-        </a>
-      </div>
+<header class="site-header">
+  <div class="brand">
+    <a href="index.html">
+      <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" alt="USIU-Africa">
+      USIU Events Hub
+    </a>
+  </div>
 
-      <nav class="primary-nav">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="EventsListView.html" aria-current="page">Events</a></li>
-          <li><a href="Gallery.html">Gallery</a></li>
-          <li><a href="aboutPage.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Toggle navigation"
+    aria-expanded="false"
+    aria-controls="primary-nav"
+  >
+    <span class="menu-bar"></span>
+    <span class="menu-bar"></span>
+    <span class="menu-bar"></span>
+  </button>
 
-      <div class="auth-buttons">
-        <a href="loginPage.html" class="login-btn" id="login-link"
-          >Login / Register</a
-        >
+  <nav class="primary-nav" id="primary-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="EventsListView.html" aria-current="page">Events</a></li>
+      <li><a href="Gallery.html">Gallery</a></li>
+      <li><a href="aboutPage.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-        <!-- Hidden until user logs in -->
-        <button
-          type="button"
-          data-logout
-          id="logout-btn"
-          class="logout-btn"
-          9005
-        >
-          Logout
-        </button>
-      </div>
-    </header>
+  <div class="auth-buttons">
+    <a href="loginPage.html" class="login-btn" id="login-link">Login / Register</a>
+
+    <!-- Hidden until user logs in -->
+    <button type="button" data-logout id="logout-btn" class="logout-btn" hidden>
+      Logout
+    </button>
+  </div>
+</header>
+
     <main id="main">
       <section>
         <h1>Events</h1>

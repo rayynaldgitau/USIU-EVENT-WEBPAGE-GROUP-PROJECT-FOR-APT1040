@@ -41,10 +41,7 @@ if (form) {
 
 }
 
-// ./JS/script.js
-// Firebase Authentication ONLY (Login + Register + Forgot Password + Logout + Page Protection + Show/Hide Password)
-
-// ---------------- Firebase Imports ----------------
+// Firebase Imports 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import {
   getAuth,
@@ -64,7 +61,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-storage.js";
 
 
-// ---------------- Firebase Config ----------------
+//  Firebase Config 
 const firebaseConfig = {
   apiKey: "AIzaSyDrvrhISJEB_TmHm0GlqmpjvP1haFYFfVQ",
   authDomain: "usiueventswebpagebackend.firebaseapp.com",
@@ -79,7 +76,7 @@ const auth = getAuth(app);
 const storage = getStorage(app);
 
 
-// ---------------- Helper Functions ----------------
+//  Helper Functions 
 function showStatus(el, msg, type = "info") {
   if (!el) return;
   el.textContent = msg;
@@ -118,13 +115,13 @@ function setupPasswordToggles() {
   });
 }
 
-// Profile picture upload
-async function uploadProfilePicture(file, uid) {
-  if (!file || !uid) return null;
-  const fileRef = ref(storage, `profile-pictures/${uid}-${file.name}`);
-  await uploadBytes(fileRef, file);
-  return await getDownloadURL(fileRef);
-}
+// // Profile picture upload
+// async function uploadProfilePicture(file, uid) {
+//   if (!file || !uid) return null;
+//   const fileRef = ref(storage, `profile-pictures/${uid}-${file.name}`);
+//   await uploadBytes(fileRef, file);
+//   return await getDownloadURL(fileRef);
+// }
 
 // Logout logic for any button with [data-logout]
 function setupLogoutButtons() {
@@ -138,15 +135,15 @@ function setupLogoutButtons() {
 }
 
 
-// ---------------- Main Logic (runs on every page) ----------------
+// Main Logic (runs on every page) 
 window.addEventListener("DOMContentLoaded", () => {
   setupPasswordToggles();
   setupLogoutButtons();
 
 
-  // =========================================================
+
   // LOGIN FORM LOGIC
-  // =========================================================
+
   const loginForm = document.getElementById("login-form");
   const loginStatus = document.getElementById("auth-status-login");
 
@@ -180,10 +177,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-
-  // =========================================================
   // REGISTRATION FORM LOGIC
-  // =========================================================
+ 
   const registerForm = document.getElementById("register-form");
   const registerStatus = document.getElementById("auth-status-register");
 
@@ -219,15 +214,15 @@ window.addEventListener("DOMContentLoaded", () => {
         const userCred = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCred.user;
 
-        // Upload profile picture (optional)
-        let photoURL = null;
-        if (photoInput?.files[0]) {
-          try {
-            photoURL = await uploadProfilePicture(photoInput.files[0], user.uid);
-          } catch (err) {
-            console.error("Profile upload error:", err);
-          }
-        }
+        // // Upload profile picture (optional)
+        // let photoURL = null;
+        // if (photoInput?.files[0]) {
+        //   try {
+        //     photoURL = await uploadProfilePicture(photoInput.files[0], user.uid);
+        //   } catch (err) {
+        //     console.error("Profile upload error:", err);
+        //   }
+        // }
 
         // Update profile
         await updateProfile(user, {
@@ -249,9 +244,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // =========================================================
   // FORGOT PASSWORD PAGE LOGIC
-  // =========================================================
+
   const forgotForm = document.getElementById("forgot-form");
   const forgotStatus = document.getElementById("auth-status-forgot");
 
@@ -282,9 +276,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // =========================================================
   // SHOW/HIDE LOGIN–LOGOUT IN NAVBAR
-  // =========================================================
+
   const loginLink = document.getElementById("login-link");
   const logoutBtn = document.getElementById("logout-btn");
 
@@ -315,3 +308,15 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// for the navigation menu toggle
+// MOBILE NAV TOGGLE
+const menuToggle = document.querySelector('.menu-toggle');
+const primaryNav = document.getElementById('primary-nav');
+
+if (menuToggle && primaryNav) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = primaryNav.classList.toggle('is-open');
+    menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+}
