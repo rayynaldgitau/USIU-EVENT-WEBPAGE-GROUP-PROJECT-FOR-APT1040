@@ -888,58 +888,51 @@ window.addEventListener("DOMContentLoaded", () => {
           }
         }
 
-        // Handle submit
-        eventRegisterForm.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          if (!eventRegisterForm.reportValidity()) return;
+// Handle submit
+eventRegisterForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!eventRegisterForm.reportValidity()) return;
 
-          const name = eventRegisterForm.name.value.trim();
-          const email = eventRegisterForm.email.value.trim();
-          const phone = eventRegisterForm.phone.value.trim();
-          const notes = (eventRegisterForm.notes?.value || "").trim();
+  const name = eventRegisterForm.name.value.trim();
+  const email = eventRegisterForm.email.value.trim();
+  const phone = eventRegisterForm.phone.value.trim();
+  const notes = (eventRegisterForm.notes?.value || "").trim();
 
-          let mpesaPhone = "";
-          let mpesaCode = "";
+  if (!ev) {
+    showStatus(
+      eventRegisterStatus,
+      "Event details not loaded.",
+      "error"
+    );
+    return;
+  }
 
-          if (!ev) {
-            showStatus(
-              eventRegisterStatus,
-              "Event details not loaded.",
-              "error"
-            );
-            return;
-          }
-
-          if (!ev.isFree) {
-            mpesaPhone = (eventRegisterForm.mpesaPhone?.value || "").trim();
-            mpesaCode = (eventRegisterForm.mpesaCode?.value || "").trim();
-
-            if (!mpesaPhone) {
-              showStatus(
-                eventRegisterStatus,
-                "Please enter your M-Pesa phone number.",
-                "error"
-              );
-              return;
-            }
-          }
-
-          // Basic ticket code – you can customize if you like
-          const ticketCode = `USIU-${eventId
-            .slice(0, 4)
-            .toUpperCase()}-${Date.now().toString().slice(-4)}`;
-
-          showStatus(
-            eventRegisterStatus,
-            ev.isFree
-              ? "Submitting your registration…"
-              : "Recording your registration and M-Pesa details…",
-            "info"
-          );
+  let mpesaPhone = "";
+  let mpesaCode = "";
+  let checkoutRequestId = null;
 
   const amount = ev.price != null ? ev.price : 0;
 
-  // Paid events: start STK push via backend
+  if (!ev.isFree) {
+    mpesaPhone = (eventRegisterForm.mpesaPhone?.value || "").trim();
+    mpesaCode = (eventRegisterForm.mpesaCode?.value || "").trim();
+
+    if (!mpesaPhone) {
+      showStatus(
+        eventRegisterStatus,
+        "Please enter your M-Pesa phone number.",
+        "error"
+      );
+      return;
+    }
+  }
+
+  // Basic ticket code – you can customize if you like
+  const ticketCode = `USIU-${eventId
+    .slice(0, 4)
+    .toUpperCase()}-${Date.now().toString().slice(-4)}`;
+
+  // ---------- 1) Try to start M-Pesa (only for paid events) ----------
   if (!ev.isFree) {
     try {
       showStatus(
@@ -957,17 +950,17 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
       console.log("STK push started:", stkData);
-      var checkoutRequestID = stkData.CheckoutRequestID;
-      // Optionally show stkData.CustomerMessage to the user
+      checkoutRequestId = stkData.CheckoutRequestID || null;
     } catch (mpesaErr) {
       console.error("M-Pesa start error:", mpesaErr);
+
+      // Do NOT block registration anymore
       showStatus(
         eventRegisterStatus,
-        mpesaErr.message ||
-          "Could not start M-Pesa payment. Please check your number and try again.",
-        "error"
+        "M-Pesa sandbox is not responding. " +
+          "We will still record your registration as UNPAID (demo).",
+        "warning"
       );
-      return; // do not continue registration if payment failed to start
     }
   } else {
     showStatus(
@@ -977,61 +970,80 @@ window.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  
+  // ---------- 2) Save registration in Firestore (always) ----------
+  try {
+    const paymentStatus = ev.isFree
+      ? "not_required"
+      : checkoutRequestId
+      ? "pending"
+      : "mpesa_error";
 
-          
+    await addDoc(collection(db, "eventRegistrations"), {
+      eventId,
+      eventTitle: ev.title || "",
+      name,
+      email,
+      phone,
+      notes,
+      mpesaPhone,
+      mpesaCode,
+      amount,
+      isFree: !!ev.isFree,
+      ticketCode,
+      checkoutRequestId: checkoutRequestId,
+      createdAt: serverTimestamp(),
+      paymentStatus,
+    });
 
-          try {
-            // 1) Save registration in Firestore
-            await addDoc(collection(db, "eventRegistrations"), {
-  eventId,
-  eventTitle: ev.title || "",
-  name,
-  email,
-  phone,
-  notes,
-  mpesaPhone,
-  mpesaCode,
-  amount,
-  isFree: !!ev.isFree,
-  ticketCode,
-  checkoutRequestId: checkoutRequestId || null, // important for callback
-  createdAt: serverTimestamp(),
-  paymentStatus: ev.isFree ? "not_required" : "pending",
-            });
+    // ---------- 3) Send ticket email ----------
+    try {
+      await sendTicketEmailWithEmailJS({
+        name,
+        email,
+        ev,
+        ticketCode,
+      });
+    } catch (emailErr) {
+      console.error("Ticket email send error:", emailErr);
+      // do not fail the whole flow if email fails
+    }
 
-            // 2) Send ticket email with EmailJS (frontend)
-            try {
-              await sendTicketEmailWithEmailJS({
-                name,
-                email,
-                ev,
-                ticketCode,
-              });
-            } catch (emailErr) {
-              console.error("Ticket email send error:", emailErr);
-              // Do not fail the whole flow if email sending has an issue
-            }
+    // ---------- 4) Final UI message ----------
+    if (ev.isFree) {
+      showStatus(
+        eventRegisterStatus,
+        "Registration complete! A ticket has been emailed to you.",
+        "success"
+      );
+    } else if (checkoutRequestId) {
+      showStatus(
+        eventRegisterStatus,
+        "Registration recorded. STK push sent (sandbox). " +
+          "Check your phone, enter your M-Pesa PIN, and keep the SMS as proof. " +
+          "A ticket has been emailed to you.",
+        "success"
+      );
+    } else {
+      showStatus(
+        eventRegisterStatus,
+        "Registration recorded as UNPAID (M-Pesa demo / error). " +
+          "This is a sandbox demo – no real money was charged. " +
+          "A ticket has been emailed to you.",
+        "success"
+      );
+    }
 
-            // 3) Final UI feedback
-            showStatus(
-              eventRegisterStatus,
-              ev.isFree
-                ? "Registration complete! A ticket has been emailed to you."
-                : "Registration recorded. A ticket has been emailed to you. Please complete payment on your phone and keep your M-Pesa message as proof.",
-              "success"
-            );
+    eventRegisterForm.reset();
+  } catch (err) {
+    console.error("Registration save error:", err);
+    showStatus(
+      eventRegisterStatus,
+      "Could not save registration. Please try again.",
+      "error"
+    );
+  }
+});
 
-            eventRegisterForm.reset();
-          } catch (err) {
-            console.error("Registration save error:", err);
-            showStatus(
-              eventRegisterStatus,
-              "Could not save registration. Please try again.",
-              "error"
-            );
-          }
-        });
       } catch (err) {
         console.error("Event load error:", err);
         showStatus(
