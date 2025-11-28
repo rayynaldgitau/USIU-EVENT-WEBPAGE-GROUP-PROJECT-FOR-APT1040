@@ -12,58 +12,142 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <script type="module" defer src="./JS/script.js"></script>
   </head>
-  <body>
+
+  <body data-page="events">
     <a class="skip-link" href="#main">Skip to main content</a>
+
     <!-- Header -->
-<header class="site-header">
-  <div class="brand">
-    <a href="index.html">
-      <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" alt="USIU-Africa">
-      USIU Events Hub
-    </a>
-  </div>
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html">
+          <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" alt="USIU-Africa">
+          USIU Events Hub
+        </a>
+      </div>
 
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="Toggle navigation"
-    aria-expanded="false"
-    aria-controls="primary-nav"
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="EventsListView.html" aria-current="page">Events</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+          <li><a href="aboutPage.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="auth-buttons">
+        <a href="loginPage.html" class="login-btn" id="login-link">Login / Register</a>
+        <button type="button" data-logout id="logout-btn" class="logout-btn">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+<main id="main" class="events-page">
+  <!-- Top title + subtitle -->
+  <section class="events-hero">
+    <div class="events-hero-inner">
+      <h1>Upcoming Events</h1>
+      <p>Browse and register for upcoming university events.</p>
+    </div>
+  </section>
+
+  <!-- Filters + search + list -->
+  <section class="events-shell" aria-labelledby="events-heading">
+    <div class="events-toolbar">
+      <div class="events-filters" role="tablist" aria-label="Filter events by category">
+        <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+        <button class="filter-chip" type="button" data-filter="Academic">Academic</button>
+        <button class="filter-chip" type="button" data-filter="Social">Social</button>
+        <button class="filter-chip" type="button" data-filter="Sports">Sports</button>
+        <button class="filter-chip" type="button" data-filter="Club">Club</button>
+      </div>
+
+      <form class="events-search" role="search">
+        <label class="sr-only" for="events-search-input">Search events</label>
+        <input
+          id="events-search-input"
+          type="search"
+          placeholder="Search events…"
+          autocomplete="off"
+        />
+      </form>
+    </div>
+
+    <p class="events-count" id="events-count" aria-live="polite">
+      <!-- You can have script.js set this text, e.g. “Showing 8 events” -->
+    </p>
+
+    <!-- 🔥 script.js still injects the cards here -->
+    <div id="events-list" class="events-list" aria-describedby="events-count">
+      <!-- <article class="event-card">…</article> added by JS -->
+    </div>
+  </section>
+</main>
+<!-- Event Details Modal -->
+<div id="event-modal" class="event-modal" aria-hidden="true">
+  <div
+    class="event-modal-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="event-modal-title"
   >
-    <span class="menu-bar"></span>
-    <span class="menu-bar"></span>
-    <span class="menu-bar"></span>
-  </button>
+    <div class="event-modal-image" id="event-modal-image"></div>
 
-  <nav class="primary-nav" id="primary-nav">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="EventsListView.html" aria-current="page">Events</a></li>
-      <li><a href="Gallery.html">Gallery</a></li>
-      <li><a href="aboutPage.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+    <div class="event-modal-body">
+      <div class="event-modal-header-row">
+        <div>
+          <span class="event-modal-category" id="event-modal-category">Category</span>
+          <h2 class="event-modal-title" id="event-modal-title">Event title</h2>
+        </div>
+        <button
+          type="button"
+          class="event-modal-close"
+          id="event-modal-close"
+          aria-label="Close details"
+        >
+          ×
+        </button>
+      </div>
 
-  <div class="auth-buttons">
-    <a href="loginPage.html" class="login-btn" id="login-link">Login / Register</a>
+      <p class="event-modal-meta" id="event-modal-meta"></p>
+      <p class="event-modal-description" id="event-modal-desc"></p>
+      <p class="event-modal-price" id="event-modal-price"></p>
 
-    <!-- Hidden until user logs in -->
-    <button type="button" data-logout id="logout-btn" class="logout-btn" hidden>
-      Logout
-    </button>
+      <div class="event-modal-actions">
+        <button
+          type="button"
+          class="btn-outline"
+          id="event-modal-close-secondary"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn-primary"
+          id="event-modal-register-btn"
+        >
+          Register
+        </button>
+      </div>
+    </div>
   </div>
-</header>
+</div>
 
-    <main id="main">
-      <section>
-        <h1>Events</h1>
-        <h2>List View</h2>
-      </section>
-      <section>
-        <h3>Upcoming Events</h3>
-      </section>
-    </main>
+
     <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-main">
@@ -99,14 +183,8 @@
           <h4>Resources</h4>
           <ul>
             <li><a href="https://www.usiu.ac.ke/helpdesk/">Support</a></li>
-            <li>
-              <a href="https://www.usiu.ac.ke/terms-of-use/">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="https://www.usiu.ac.ke/terms-of-use/"
-                >Terms of Service</a
-              >
-            </li>
+            <li><a href="https://www.usiu.ac.ke/terms-of-use/">Privacy Policy</a></li>
+            <li><a href="https://www.usiu.ac.ke/terms-of-use/">Terms of Service</a></li>
           </ul>
         </div>
 
@@ -114,30 +192,18 @@
         <div class="footer-column">
           <h4>Follow Us</h4>
           <div class="social-links">
-            <a
-              href="https://www.facebook.com/USIUAFRICA/?ref=embed_page#"
-              aria-label="Facebook"
-              class="social-icon"
-              ><img src="./assets/icons/facebook icon.svg" alt=""
-            /></a>
-            <a
-              href="https://x.com/ExperienceUSIU?s=20"
-              aria-label="Twitter"
-              class="social-icon"
-              ><img src="./assets/icons/twitter icon.svg" alt=""
-            /></a>
-            <a
-              href="https://www.instagram.com/usiuafrica?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-              aria-label="Instagram"
-              class="social-icon"
-              ><img src="./assets/icons/instagram icon.svg" alt=""
-            /></a>
-            <a
-              href="https://www.linkedin.com/school/united-states-international-university-africa/"
-              aria-label="LinkedIn"
-              class="social-icon"
-              ><img src="./assets/icons/linkedin icon.svg" alt=""
-            /></a>
+            <a href="https://www.facebook.com/USIUAFRICA/?ref=embed_page#" aria-label="Facebook" class="social-icon">
+              <img src="./assets/icons/facebook icon.svg" alt="Facebook icon" />
+            </a>
+            <a href="https://x.com/ExperienceUSIU?s=20" aria-label="Twitter" class="social-icon">
+              <img src="./assets/icons/twitter icon.svg" alt="Twitter icon" />
+            </a>
+            <a href="https://www.instagram.com/usiuafrica" aria-label="Instagram" class="social-icon">
+              <img src="./assets/icons/instagram icon.svg" alt="Instagram icon" />
+            </a>
+            <a href="https://www.linkedin.com/school/united-states-international-university-africa/" aria-label="LinkedIn" class="social-icon">
+              <img src="./assets/icons/linkedin icon.svg" alt="LinkedIn icon" />
+            </a>
           </div>
         </div>
       </div>

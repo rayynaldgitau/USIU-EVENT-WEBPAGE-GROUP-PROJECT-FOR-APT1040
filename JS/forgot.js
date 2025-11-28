@@ -19,7 +19,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// ✅ status helper
+// status helper
 function setStatus(el, msg, type = "info") {
   if (!el) return;
   el.textContent = msg;
@@ -27,7 +27,7 @@ function setStatus(el, msg, type = "info") {
   el.classList.add(`status-${type}`);
 }
 
-// ✅ friendlier Firebase error messages
+// friendlier Firebase error messages
 function friendlyError(error) {
   if (!error?.code) return "Something went wrong.";
   switch (error.code) {

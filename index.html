@@ -12,14 +12,14 @@
     <script type="module" defer src="./JS/script.js"></script>
   </head>
 
-  <body>
+  <body data-page="home">
     <a class="skip-link" href="#main">Skip to main content</a>
 
     <!-- Header -->
 <header class="site-header">
   <div class="brand">
-    <a href="index.html">
-      <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" alt="USIU-Africa">
+    <a href="index.html" aria-label="USIU Events Hub Home">
+      <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" alt="USIU-Africa Logo">
       USIU Events Hub
     </a>
   </div>
@@ -31,12 +31,12 @@
     aria-expanded="false"
     aria-controls="primary-nav"
   >
-    <span class="menu-bar"></span>
-    <span class="menu-bar"></span>
-    <span class="menu-bar"></span>
+    <span class="menu-bar" aria-hidden="true"></span>
+    <span class="menu-bar" aria-hidden="true" ></span>
+    <span class="menu-bar" aria-hidden="true"></span>
   </button>
 
-  <nav class="primary-nav" id="primary-nav">
+  <nav class="primary-nav" id="primary-nav" aria-label = "Primary">
     <ul>
       <li><a href="index.html" aria-current="page">Home</a></li>
       <li><a href="EventsListView.html">Events</a></li>
@@ -48,7 +48,7 @@
 
   <div class="auth-buttons">
     <!-- Hidden until user logs in -->
-    <button type="button" data-logout id="logout-btn" class="logout-btn" hidden>
+    <button type="button" data-logout id="logout-btn" class="logout-btn" >
       Logout
     </button>
     <a href="loginPage.html" class="login-btn" id="login-link">Login / Register</a>
@@ -66,44 +66,47 @@
           university events. Never miss an important event again.
         </p>
 
-        <div class="search-bar">
+        <div class="search-bar" aria-label="search events">
           <input
+            id="home-search-input"
             type="text"
             placeholder="Search events..."
             aria-label="Search events"
+            aria-describedby="search-help"
           />
         </div>
+        <p id="search-help" class="visually-hidden">Type keywords to search for events</p>
       </section>
 
       <!-- Stats Section -->
-      <section class="stats">
+      <section class="stats" aria-labelledby="stats-heading">
         <div class="stat-box">
-          <h2>24</h2>
+          <h2 id="stat-upcoming-events"></h2>
           <p>Upcoming Events</p>
         </div>
 
         <div class="stat-box">
-          <h2>1,250+</h2>
+          <h2 id="stat-registered-students"></h2>
           <p>Registered Students</p>
         </div>
 
         <div class="stat-box">
-          <h2>48</h2>
+          <h2 id="stat-events-semester"></h2>
           <p>Events This Semester</p>
         </div>
       </section>
 
       <!-- Featured Events Section -->
-      <section class="featured-events">
+      <section class="featured-events" aria-labelledby="featured-events-heading">
         <div class="section-header">
-          <h3>Featured Events</h3>
+          <h3 id="featured-events-heading">Featured Events</h3>
           <a href="EventsListView.html" class="view-all-btn">View All Events</a>
         </div>
 
-        <div class="event-grid">
-          <!-- Event card -->
-          <article class="event-card">
-            <div class="event-image"></div>
+        <div class="event-grid" id ="home-featured-grid">
+           <!-- Event card -->
+          <!-- <article class="event-card" aria-labelledby="event 1 title">
+            <div class="event-image" role="img"></div>
             <div class="event-content">
               <h4>Annual Research Symposium</h4>
 
@@ -115,10 +118,10 @@
 
               <button class="register-btn">Register</button>
             </div>
-          </article>
+          </article> -->
 
-          <article class="event-card">
-            <div class="event-image"></div>
+          <!-- <article class="event-card" aria-labelledby="event 2 title">
+            <div class="event-image" role="img"></div>
             <div class="event-content">
               <h4>International Students Day</h4>
 
@@ -132,8 +135,8 @@
             </div>
           </article>
 
-          <article class="event-card">
-            <div class="event-image"></div>
+          <article class="event-card" aria-labelledby="event 3 title">
+            <div class="event-image" role="img"></div>
             <div class="event-content">
               <h4>Career Fair 2025</h4>
 
@@ -147,29 +150,80 @@
             </div>
           </article>
 
-          <article class="event-card">
-            <div class="event-image"></div>
+          <article class="event-card" aria-labelledby="event 4 title">
+            <div class="event-image" role="img"></div>
             <div class="event-content">
               <h4>Spring Sports Tournament</h4>
 
               <ul class="event-meta">
-                <li><img src="./assets/icons/calendar icon.svg" alt=""> April 2, 2025</li>
-                <li><img src="./assets/icons/time icon.svg" alt=""> 2:00 PM</li>
-                <li><img src="./assets/icons/location icon.svg" alt=""> Main Campus</li>
+                <li><img src="./assets/icons/calendar icon.svg" alt="" aria-hidden="true"> April 2, 2025</li>
+                <li><img src="./assets/icons/time icon.svg" alt="" aria-hidden="true"> 2:00 PM</li>
+                <li><img src="./assets/icons/location icon.svg" alt="" aria-hidden="true"> Main Campus</li>
               </ul>
 
               <button class="register-btn">Register</button>
             </div>
-          </article>
+          </article> -->
         </div>
       </section>
     </main>
 
+    <!-- Event Details Modal -->
+<div id="event-modal" class="event-modal" aria-hidden="true">
+  <div
+    class="event-modal-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="event-modal-title"
+  >
+    <div class="event-modal-image" id="event-modal-image"></div>
+
+    <div class="event-modal-body">
+      <div class="event-modal-header-row">
+        <div>
+          <span class="event-modal-category" id="event-modal-category">Category</span>
+          <h2 class="event-modal-title" id="event-modal-title">Event title</h2>
+        </div>
+        <button
+          type="button"
+          class="event-modal-close"
+          id="event-modal-close"
+          aria-label="Close details"
+        >
+          ×
+        </button>
+      </div>
+
+      <p class="event-modal-meta" id="event-modal-meta"></p>
+      <p class="event-modal-description" id="event-modal-desc"></p>
+      <p class="event-modal-price" id="event-modal-price"></p>
+
+      <div class="event-modal-actions">
+        <button
+          type="button"
+          class="btn-outline"
+          id="event-modal-close-secondary"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn-primary"
+          id="event-modal-register-btn"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <!-- Footer -->
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
       <div class="footer-main">
         <!-- Brand / Description -->
-        <div class="footer-brand">
+        <div class="footer-brand" aria-label="About Usiu Events Hub">
           <div class="footer-brand-logo">
             <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" width="50" height="50" alt="USIU-Africa logo">
             <span>USIU Events Hub</span>
@@ -180,8 +234,8 @@
         </div>
 
         <!-- Quick Links -->
-        <div class="footer-column">
-          <h4>Quick Links</h4>
+        <div class="footer-column" aria-label="Quick Links">
+          <h4 id="footer quick links" class="footer-heading">Quick Links</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="aboutPage.html">About Us</a></li>

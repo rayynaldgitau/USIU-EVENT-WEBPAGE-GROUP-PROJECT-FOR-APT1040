@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Register for Event — USIU Events Hub</title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://www.usiu.ac.ke/assets/image/usiu-logo.png"
+    />
+
+    <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" defer src="./JS/script.js"></script>
+  </head>
+
+  <body data-page="event-register">
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- HEADER (same as other pages) -->
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html">
+          <img
+            src="https://www.usiu.ac.ke/assets/image/usiu-logo.png"
+            alt="USIU-Africa"
+          />
+          USIU Events Hub
+        </a>
+      </div>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+        <span class="menu-bar"></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="EventsListView.html">Events</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+          <li><a href="aboutPage.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="auth-buttons">
+        <a href="loginPage.html" class="login-btn" id="login-link"
+          >Login / Register</a
+        >
+        <button type="button" data-logout id="logout-btn" class="logout-btn">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main id="main" class="register-page">
+      <!-- Hero / breadcrumb -->
+      <section class="register-hero">
+        <div class="register-hero-inner">
+          <a href="EventsListView.html" class="back-link">← Back to Events</a>
+          <h1 id="event-title-display">Loading event…</h1>
+          <p id="event-meta-display" class="register-meta"></p>
+        </div>
+      </section>
+
+      <!-- Layout: form + summary -->
+      <section class="register-layout">
+        <div class="register-main">
+          <div class="register-card">
+            <h2>Attendee details</h2>
+            <p class="register-note">
+              Please fill in your details to reserve your spot.
+            </p>
+
+            <form id="event-register-form" novalidate>
+              <div class="form-grid">
+                <label class="form-field">
+                  <span>Full Name</span>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Your full name"
+                  />
+                </label>
+
+                <label class="form-field">
+                  <span>Email</span>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="you@example.com"
+                  />
+                </label>
+
+                <label class="form-field">
+                  <span>Phone Number</span>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    placeholder="07XXXXXXXX"
+                  />
+                </label>
+
+                <label class="form-field">
+                  <span>Additional Notes (optional)</span>
+                  <textarea
+                    name="notes"
+                    rows="3"
+                    placeholder="Any special requirements or comments?"
+                  ></textarea>
+                </label>
+              </div>
+
+              <!-- M-Pesa section is filled dynamically from script.js -->
+              <div id="payment-section" class="payment-section"></div>
+
+              <p
+                id="auth-status-register-event"
+                class="form-status"
+                aria-live="polite"
+              ></p>
+
+              <button type="submit" class="btn-primary register-submit-btn">
+                Confirm Registration
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <aside class="register-sidebar">
+          <div class="summary-card">
+            <h2>Event Summary</h2>
+            <p class="summary-title" id="summary-title-fallback">
+              Event details will appear here.
+            </p>
+            <dl class="summary-list">
+              <div>
+                <dt>Date &amp; Time</dt>
+                <dd id="summary-meta"></dd>
+              </div>
+              <div>
+                <dt>Location</dt>
+                <dd id="summary-location"></dd>
+              </div>
+              <div>
+                <dt>Price</dt>
+                <dd id="summary-price">Loading…</dd>
+              </div>
+            </dl>
+            <p class="summary-hint">
+              You will receive a confirmation once your registration is
+              recorded. For paid events, ensure your M-Pesa payment details are
+              correct.
+            </p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <!-- FOOTER (same as other pages) -->
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <img
+              src="https://www.usiu.ac.ke/assets/image/usiu-logo.png"
+              width="50"
+              height="50"
+              alt="USIU-Africa logo"
+            />
+            <span>USIU Events Hub</span>
+          </div>
+          <p class="footer-brand-text">
+            Your central platform for all university events and activities.
+          </p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutPage.html">About Us</a></li>
+            <li><a href="EventsListView.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="https://www.usiu.ac.ke/helpdesk/">Support</a></li>
+            <li>
+              <a href="https://www.usiu.ac.ke/terms-of-use/">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="https://www.usiu.ac.ke/terms-of-use/"
+                >Terms of Service</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a
+              href="https://www.facebook.com/USIUAFRICA/?ref=embed_page#"
+              aria-label="Facebook"
+              class="social-icon"
+            >
+              <img src="./assets/icons/facebook icon.svg" alt="Facebook icon" />
+            </a>
+            <a
+              href="https://x.com/ExperienceUSIU?s=20"
+              aria-label="Twitter"
+              class="social-icon"
+            >
+              <img src="./assets/icons/twitter icon.svg" alt="Twitter icon" />
+            </a>
+            <a
+              href="https://www.instagram.com/usiuafrica"
+              aria-label="Instagram"
+              class="social-icon"
+            >
+              <img
+                src="./assets/icons/instagram icon.svg"
+                alt="Instagram icon"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/school/united-states-international-university-africa/"
+              aria-label="LinkedIn"
+              class="social-icon"
+            >
+              <img src="./assets/icons/linkedin icon.svg" alt="LinkedIn icon" />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-divider" />
+
+      <div class="footer-bottom">
+        <small>© 2025 USIU Events Hub. All rights reserved.</small>
+      </div>
+    </footer>
+  </body>
+</html>

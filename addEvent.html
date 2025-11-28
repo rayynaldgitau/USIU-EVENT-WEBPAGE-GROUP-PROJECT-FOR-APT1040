@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Event — USIU Events Hub</title>
+
+    <link rel="icon" type="image/png" href="https://www.usiu.ac.ke/assets/image/usiu-logo.png">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script type="module" defer src="./JS/script.js"></script>
+  </head>
+
+  <!-- Protected + tagged so script.js can treat it as the Add Event page -->
+  <body class="auth-page" data-protected="true" data-page="add-event">
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="brand">
+        <a href="index.html" aria-label="USIU Events Hub Home">
+          <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" alt="USIU-Africa Logo">
+          USIU Events Hub
+        </a>
+      </div>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+      >
+        <span class="menu-bar" aria-hidden="true"></span>
+        <span class="menu-bar" aria-hidden="true"></span>
+        <span class="menu-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="EventsListView.html">Events</a></li>
+          <li><a href="Gallery.html">Gallery</a></li>
+          <li><a href="aboutPage.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <!-- "Add Event" will be injected here by JS for admins  -->
+        </ul>
+      </nav>
+
+      <div class="auth-buttons">
+        <button type="button" data-logout id="logout-btn" class="logout-btn">
+          Logout
+        </button>
+        <a href="loginPage.html" class="login-btn" id="login-link">Login / Register</a>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main id="main" class="auth-main">
+      <section class="auth-hero">
+        <div class="auth-container">
+          <h1>Create a new event</h1>
+          <p>Only administrators can add events to the USIU Events Hub.</p>
+        </div>
+      </section>
+
+      <section class="auth-main">
+        <div class="auth-container">
+          <section class="auth-card" aria-labelledby="add-event-heading">
+            <h2 id="add-event-heading" class="card-title">Event details</h2>
+
+            <div
+              id="auth-status-add-event"
+              class="auth-status"
+              role="status"
+              aria-live="polite">
+            </div>
+
+            <!-- This form is wired in script.js  -->
+            <form id="add-event-form" novalidate>
+              <!-- Title -->
+              <div class="field">
+                <label for="event-title">Event title</label>
+                <input
+                  id="event-title"
+                  name="title"
+                  type="text"
+                  required
+                  placeholder="Tech Talk: Intro to Firebase">
+              </div>
+
+              <!-- Description -->
+              <div class="field">
+                <label for="event-description">Description</label>
+                <textarea
+                  id="event-description"
+                  name="description"
+                  rows="4"
+                  placeholder="Brief details about the event, speakers, and what to expect">
+                </textarea>
+              </div>
+
+              <!-- Date & Time -->
+              <div class="field-row">
+                <div class="field">
+                  <label for="event-date">Date</label>
+                  <input
+                    id="event-date"
+                    name="date"
+                    type="date"
+                    required>
+                </div>
+
+                <div class="field">
+                  <label for="event-time">Time</label>
+                  <input
+                    id="event-time"
+                    name="time"
+                    type="time"
+                    required>
+                </div>
+              </div>
+
+              <!-- Location & Category -->
+              <div class="field-row">
+                <div class="field">
+                  <label for="event-location">Location</label>
+                  <input
+                    id="event-location"
+                    name="location"
+                    type="text"
+                    required
+                    placeholder="Chandaria Auditorium">
+                </div>
+
+                <div class="field">
+                  <label for="event-category">Category</label>
+                  <select id="event-category" name="category">
+                    <option value="general">General</option>
+                    <option value="academic">Academic</option>
+                    <option value="club">Club</option>
+                    <option value="sports">Sports</option>
+                    <option value="cultural">Cultural</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Free / Paid + Price -->
+              <div class="field-row">
+                <div class="field">
+                  <label>Is this event free?</label>
+                  <div class="radio-group">
+                    <label>
+                      <input
+                        type="radio"
+                        name="isFree"
+                        value="true"
+                        checked>
+                      Free
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        name="isFree"
+                        value="false">
+                      Paid
+                    </label>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="event-price">Price (KES)</label>
+                  <input
+                    id="event-price"
+                    name="price"
+                    type="number"
+                    min="0"
+                    step="10"
+                    placeholder="500"
+                    disabled>
+                </div>
+              </div>
+
+              <!-- Image -->
+              <div class="field">
+                <label for="event-image">Event image</label>
+                <input
+                  id="event-image"
+                  name="eventImage"
+                  type="file"
+                  accept="image/*"
+                  required>
+                <p class="field-hint small">
+                  Maximum allowed image size: 1 MB.
+                </p>
+              </div>
+
+              <button type="submit" class="auth-primary-btn">
+                <span>Create event</span>
+              </button>
+            </form>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
