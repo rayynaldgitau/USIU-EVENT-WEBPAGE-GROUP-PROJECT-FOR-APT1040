@@ -1266,6 +1266,26 @@ eventRegisterForm.addEventListener("submit", async (e) => {
   const logoutBtn = document.getElementById("logout-btn");
   const navList = document.querySelector("#primary-nav ul");
 
+  // Function to update auth UI state
+  function updateAuthUI(user) {
+    // Header login/logout toggle
+    if (loginLink && logoutBtn) {
+      if (user) {
+        loginLink.hidden = true;
+        logoutBtn.hidden = false;
+      } else {
+        logoutBtn.hidden = true;
+        loginLink.hidden = false;
+      }
+    }
+  }
+
+  // Check current auth state immediately to prevent flash
+  const currentUser = auth.currentUser;
+  if (currentUser !== null) {
+    updateAuthUI(currentUser);
+  }
+
   onAuthStateChanged(auth, (user) => {
     const isProtected = body.dataset.protected === "true";
     const isAuthPage =
@@ -1276,16 +1296,8 @@ eventRegisterForm.addEventListener("submit", async (e) => {
     const isAdmin = user && ADMIN_EMAILS.includes(user.email);
     console.log("Auth state changed:", { email: user?.email, isAdmin });
 
-    // Header login/logout toggle
-    if (loginLink && logoutBtn) {
-      if (user) {
-        loginLink.style.display = "none";
-        logoutBtn.style.display = "inline-flex";
-      } else {
-        logoutBtn.style.display = "none";
-        loginLink.style.display = "inline-flex";
-      }
-    }
+    // Update auth UI
+    updateAuthUI(user);
 
     // Admin-only "Add Event" nav item
     if (navList) {
