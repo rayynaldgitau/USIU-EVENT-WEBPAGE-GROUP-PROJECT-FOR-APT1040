@@ -192,16 +192,17 @@ function friendlyError(error) {
 // Show/Hide password toggles
 function setupPasswordToggles() {
   const toggles = document.querySelectorAll("[data-toggle-password]");
-  toggles.forEach((btn) => {
-    const targetId = btn.getAttribute("data-toggle-password");
-    const input = document.getElementById(targetId);
+  toggles.forEach((checkbox) => {
+    const targetIds = checkbox.getAttribute("data-toggle-password");
+    const inputIds = targetIds.split(",").map(id => id.trim());
+    const inputs = inputIds.map(id => document.getElementById(id)).filter(Boolean);
 
-    if (!input) return;
+    if (inputs.length === 0) return;
 
-    btn.addEventListener("click", () => {
-      const isHidden = input.type === "password";
-      input.type = isHidden ? "text" : "password";
-      btn.textContent = isHidden ? "Hide" : "Show";
+    checkbox.addEventListener("change", () => {
+      inputs.forEach(input => {
+        input.type = checkbox.checked ? "text" : "password";
+      });
     });
   });
 }
