@@ -1035,6 +1035,46 @@ body[data-page="events"] {
 .btn-primary:hover {
   background-color: #020617;
 }
+/* ---------- Gallery Grid ---------- */
+
+.gallery-section {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.gallery-grid img {
+  width: 30%; /* 3 per row */
+  aspect-ratio: 1/1; /* makes them perfect squares */
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .gallery-grid img {
+    width: 45%; /* 2 per row on tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid img {
+    width: 100%; /* 1 per row on phones */
+  }
+}
+
 
 /* ---------- Responsive adjustments ---------- */
 
