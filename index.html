@@ -1,277 +1,290 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>USIU Events Hub</title>
-    <!-- redirecting to the login page -->
-    <!-- <meta http-equiv="refresh" content="0; URL='loginPage.html'" /> -->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>USIU Events Hub</title>
+        <!-- redirecting to the login page -->
+        <!-- <meta http-equiv="refresh" content="0; URL='loginPage.html'" /> -->
 
-    <link rel="icon" type="image/png" href="https://www.usiu.ac.ke/assets/image/usiu-logo.png">
-    <link rel="stylesheet" href="./css/styles.css" />
-    <script type="module" defer src="./JS/script.js"></script>
-  </head>
+        <link
+            rel="icon"
+            type="image/png"
+            href="https://www.usiu.ac.ke/assets/image/usiu-logo.png"
+        />
+        <link rel="stylesheet" href="./css/styles.css" />
+        <script type="module" defer src="./JS/script.js"></script>
+    </head>
 
-  <body data-page="home">
-    <a class="skip-link" href="#main">Skip to main content</a>
+    <body data-page="home">
+        <a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- Header -->
-<header class="site-header">
-  <div class="brand">
-    <a href="index.html" aria-label="USIU Events Hub Home">
-      <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" alt="USIU-Africa Logo">
-      USIU Events Hub
-    </a>
-  </div>
-
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="Toggle navigation"
-    aria-expanded="false"
-    aria-controls="primary-nav"
-  >
-    <span class="menu-bar" aria-hidden="true"></span>
-    <span class="menu-bar" aria-hidden="true" ></span>
-    <span class="menu-bar" aria-hidden="true"></span>
-  </button>
-
-  <nav class="primary-nav" id="primary-nav" aria-label = "Primary">
-    <ul>
-      <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="EventsListView.html">Events</a></li>
-      <li><a href="Gallery.html">Gallery</a></li>
-      <li><a href="aboutPage.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-
-  <div class="auth-buttons">
-    <!-- Hidden until user logs in -->
-    <button type="button" data-logout id="logout-btn" class="logout-btn" hidden>
-      Logout
-    </button>
-    <a href="loginPage.html" class="login-btn" id="login-link">Login / Register</a>
-  </div>
-</header>
-
-
-    <!-- Main -->
-    <main id="main">
-      <!-- Hero Section -->
-      <section class="hero">
-        <h1>Discover Campus Events</h1>
-        <p>
-          Your one-stop platform to explore, register, and stay updated on all
-          university events. Never miss an important event again.
-        </p>
-
-        <div class="search-bar" aria-label="search events">
-          <input
-            id="home-search-input"
-            type="text"
-            placeholder="Search events..."
-            aria-label="Search events"
-            aria-describedby="search-help"
-          />
-        </div>
-        <p id="search-help" class="visually-hidden">Type keywords to search for events</p>
-      </section>
-
-      <!-- Stats Section -->
-      <section class="stats" aria-labelledby="stats-heading">
-        <div class="stat-box">
-          <h2 id="stat-upcoming-events"></h2>
-          <p>Upcoming Events</p>
-        </div>
-
-        <div class="stat-box">
-          <h2 id="stat-registered-students"></h2>
-          <p>Registered Students</p>
-        </div>
-
-        <div class="stat-box">
-          <h2 id="stat-events-semester"></h2>
-          <p>Events This Semester</p>
-        </div>
-      </section>
-
-      <!-- Featured Events Section -->
-      <section class="featured-events" aria-labelledby="featured-events-heading">
-        <div class="section-header">
-          <h3 id="featured-events-heading">Featured Events</h3>
-          <a href="EventsListView.html" class="view-all-btn">View All Events</a>
-        </div>
-
-        <div class="event-grid" id ="home-featured-grid">
-           <!-- Event card -->
-          <!-- <article class="event-card" aria-labelledby="event 1 title">
-            <div class="event-image" role="img"></div>
-            <div class="event-content">
-              <h4>Annual Research Symposium</h4>
-
-              <ul class="event-meta">
-                <li><img src="./assets/icons/calendar icon.svg" alt=""> March 15, 2025</li>
-                <li><img src="./assets/icons/time icon.svg" alt=""> 9:00 AM</li>
-                <li><img src="./assets/icons/location icon.svg" alt=""> Main Campus</li>
-              </ul>
-
-              <button class="register-btn">Register</button>
+        <!-- Header -->
+        <header class="site-header">
+            <div class="brand">
+                <a href="index.html" aria-label="USIU Events Hub Home">
+                    <img
+                        src="https://www.usiu.ac.ke/assets/image/usiu-logo.png"
+                        alt="USIU-Africa Logo"
+                    />
+                    USIU Events Hub
+                </a>
             </div>
-          </article> -->
 
-          <!-- <article class="event-card" aria-labelledby="event 2 title">
-            <div class="event-image" role="img"></div>
-            <div class="event-content">
-              <h4>International Students Day</h4>
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Toggle navigation"
+                aria-expanded="false"
+                aria-controls="primary-nav"
+            >
+                <span class="menu-bar" aria-hidden="true"></span>
+                <span class="menu-bar" aria-hidden="true"></span>
+                <span class="menu-bar" aria-hidden="true"></span>
+            </button>
 
-              <ul class="event-meta">
-                <li><img src="./assets/icons/calendar icon.svg" alt=""> March 20, 2025</li>
-                <li><img src="./assets/icons/time icon.svg" alt=""> 10:00 AM</li>
-                <li><img src="./assets/icons/location icon.svg" alt=""> Main Campus</li>
-              </ul>
+            <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+                <ul>
+                    <li><a href="index.html" aria-current="page">Home</a></li>
+                    <li><a href="EventsListView.html">Events</a></li>
+                    <li><a href="Gallery.html">Gallery</a></li>
+                    <li><a href="aboutPage.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
 
-              <button class="register-btn">Register</button>
+            <div class="auth-buttons">
+                <!-- Hidden until user logs in -->
+                <button
+                    type="button"
+                    data-logout
+                    id="logout-btn"
+                    class="logout-btn"
+                    hidden
+                >
+                    Logout
+                </button>
+                <a href="loginPage.html" class="login-btn" id="login-link"
+                    >Login / Register</a
+                >
             </div>
-          </article>
+        </header>
 
-          <article class="event-card" aria-labelledby="event 3 title">
-            <div class="event-image" role="img"></div>
-            <div class="event-content">
-              <h4>Career Fair 2025</h4>
+        <!-- Main -->
+        <main id="main">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>Discover Campus Events</h1>
+                <p>
+                    Your one-stop platform to explore, register, and stay
+                    updated on all university events. Never miss an important
+                    event again.
+                </p>
 
-              <ul class="event-meta">
-                <li><img src="./assets/icons/calendar icon.svg" alt=""> March 25, 2025</li>
-                <li><img src="./assets/icons/time icon.svg" alt=""> 8:00 AM</li>
-                <li><img src="./assets/icons/location icon.svg" alt=""> Main Campus</li>
-              </ul>
+                <div class="search-bar" aria-label="search events">
+                    <input
+                        id="home-search-input"
+                        type="text"
+                        placeholder="Search events..."
+                        aria-label="Search events"
+                        aria-describedby="search-help"
+                    />
+                </div>
+                <p id="search-help" class="visually-hidden">
+                    Type keywords to search for events
+                </p>
+            </section>
 
-              <button class="register-btn">Register</button>
+            <!-- Stats Section -->
+            <section class="stats" aria-labelledby="stats-heading">
+                <div class="stat-box">
+                    <h2 id="stat-upcoming-events"></h2>
+                    <p>Upcoming Events</p>
+                </div>
+
+                <div class="stat-box">
+                    <h2 id="stat-registered-students"></h2>
+                    <p>Registered Students</p>
+                </div>
+
+                <div class="stat-box">
+                    <h2 id="stat-events-semester"></h2>
+                    <p>Events This Semester</p>
+                </div>
+            </section>
+
+            <!-- Featured Events Section -->
+            <section
+                class="featured-events"
+                aria-labelledby="featured-events-heading"
+            >
+                <div class="section-header">
+                    <h3 id="featured-events-heading">Featured Events</h3>
+                    <a href="EventsListView.html" class="view-all-btn"
+                        >View All Events</a
+                    >
+                </div>
+                <!-- event grid  -->
+                <div class="event-grid" id="home-featured-grid"></div>
+            </section>
+        </main>
+
+        <!-- Event Details Modal -->
+        <div id="event-modal" class="event-modal" aria-hidden="true">
+            <div
+                class="event-modal-dialog"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="event-modal-title"
+            >
+                <div class="event-modal-image" id="event-modal-image"></div>
+
+                <div class="event-modal-body">
+                    <div class="event-modal-header-row">
+                        <div>
+                            <span
+                                class="event-modal-category"
+                                id="event-modal-category"
+                                >Category</span
+                            >
+                            <h2
+                                class="event-modal-title"
+                                id="event-modal-title"
+                            >
+                                Event title
+                            </h2>
+                        </div>
+                        <button
+                            type="button"
+                            class="event-modal-close"
+                            id="event-modal-close"
+                            aria-label="Close details"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                    <p class="event-modal-meta" id="event-modal-meta"></p>
+                    <p
+                        class="event-modal-description"
+                        id="event-modal-desc"
+                    ></p>
+                    <p class="event-modal-price" id="event-modal-price"></p>
+
+                    <div class="event-modal-actions">
+                        <button
+                            type="button"
+                            class="btn-outline"
+                            id="event-modal-close-secondary"
+                        >
+                            Close
+                        </button>
+                        <button
+                            type="button"
+                            class="btn-primary"
+                            id="event-modal-register-btn"
+                        >
+                            Register
+                        </button>
+                    </div>
+                </div>
             </div>
-          </article>
+        </div>
 
-          <article class="event-card" aria-labelledby="event 4 title">
-            <div class="event-image" role="img"></div>
-            <div class="event-content">
-              <h4>Spring Sports Tournament</h4>
+        <!-- Footer -->
+        <footer class="site-footer" role="contentinfo">
+            <div class="footer-main">
+                <!-- Brand / Description -->
+                <div class="footer-brand" aria-label="About Usiu Events Hub">
+                    <div class="footer-brand-logo">
+                        <img
+                            src="https://www.usiu.ac.ke/assets/image/usiu-logo.png"
+                            width="50"
+                            height="50"
+                            alt="USIU-Africa logo"
+                        />
+                        <span>USIU Events Hub</span>
+                    </div>
+                    <p class="footer-brand-text">
+                        Your central platform for all university events and
+                        activities.
+                    </p>
+                </div>
 
-              <ul class="event-meta">
-                <li><img src="./assets/icons/calendar icon.svg" alt="" aria-hidden="true"> April 2, 2025</li>
-                <li><img src="./assets/icons/time icon.svg" alt="" aria-hidden="true"> 2:00 PM</li>
-                <li><img src="./assets/icons/location icon.svg" alt="" aria-hidden="true"> Main Campus</li>
-              </ul>
+                <!-- Quick Links -->
+                <div class="footer-column" aria-label="Quick Links">
+                    <h4 id="footer quick links" class="footer-heading">
+                        Quick Links
+                    </h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aboutPage.html">About Us</a></li>
+                        <li><a href="EventsListView.html">Events</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
 
-              <button class="register-btn">Register</button>
+                <!-- Resources -->
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li>
+                            <a href="https://www.usiu.ac.ke/helpdesk/"
+                                >Support</a
+                            >
+                        </li>
+                        <li>
+                            <a href="https://www.usiu.ac.ke/terms-of-use/"
+                                >Privacy Policy</a
+                            >
+                        </li>
+                        <li>
+                            <a href="https://www.usiu.ac.ke/terms-of-use/"
+                                >Terms of Service</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Follow Us -->
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a
+                            href="https://www.facebook.com/USIUAFRICA/?ref=embed_page#"
+                            aria-label="Facebook"
+                            class="social-icon"
+                            ><img src="./assets/icons/facebook icon.svg" alt=""
+                        /></a>
+                        <a
+                            href="https://x.com/ExperienceUSIU?s=20"
+                            aria-label="Twitter"
+                            class="social-icon"
+                            ><img src="./assets/icons/twitter icon.svg" alt=""
+                        /></a>
+                        <a
+                            href="https://www.instagram.com/usiuafrica?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            aria-label="Instagram"
+                            class="social-icon"
+                            ><img
+                                src="./assets/icons/instagram icon.svg"
+                                alt=""
+                        /></a>
+                        <a
+                            href="https://www.linkedin.com/school/united-states-international-university-africa/"
+                            aria-label="LinkedIn"
+                            class="social-icon"
+                            ><img src="./assets/icons/linkedin icon.svg" alt=""
+                        /></a>
+                    </div>
+                </div>
             </div>
-          </article> -->
-        </div>
-      </section>
-    </main>
 
-    <!-- Event Details Modal -->
-<div id="event-modal" class="event-modal" aria-hidden="true">
-  <div
-    class="event-modal-dialog"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="event-modal-title"
-  >
-    <div class="event-modal-image" id="event-modal-image"></div>
+            <hr class="footer-divider" />
 
-    <div class="event-modal-body">
-      <div class="event-modal-header-row">
-        <div>
-          <span class="event-modal-category" id="event-modal-category">Category</span>
-          <h2 class="event-modal-title" id="event-modal-title">Event title</h2>
-        </div>
-        <button
-          type="button"
-          class="event-modal-close"
-          id="event-modal-close"
-          aria-label="Close details"
-        >
-          ×
-        </button>
-      </div>
-
-      <p class="event-modal-meta" id="event-modal-meta"></p>
-      <p class="event-modal-description" id="event-modal-desc"></p>
-      <p class="event-modal-price" id="event-modal-price"></p>
-
-      <div class="event-modal-actions">
-        <button
-          type="button"
-          class="btn-outline"
-          id="event-modal-close-secondary"
-        >
-          Close
-        </button>
-        <button
-          type="button"
-          class="btn-primary"
-          id="event-modal-register-btn"
-        >
-          Register
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-    <!-- Footer -->
-    <footer class="site-footer" role="contentinfo">
-      <div class="footer-main">
-        <!-- Brand / Description -->
-        <div class="footer-brand" aria-label="About Usiu Events Hub">
-          <div class="footer-brand-logo">
-            <img src="https://www.usiu.ac.ke/assets/image/usiu-logo.png" width="50" height="50" alt="USIU-Africa logo">
-            <span>USIU Events Hub</span>
-          </div>
-          <p class="footer-brand-text">
-            Your central platform for all university events and activities.
-          </p>
-        </div>
-
-        <!-- Quick Links -->
-        <div class="footer-column" aria-label="Quick Links">
-          <h4 id="footer quick links" class="footer-heading">Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="aboutPage.html">About Us</a></li>
-            <li><a href="EventsListView.html">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Resources -->
-        <div class="footer-column">
-          <h4>Resources</h4>
-          <ul>
-            
-            <li><a href="https://www.usiu.ac.ke/helpdesk/">Support</a></li>
-            <li><a href="https://www.usiu.ac.ke/terms-of-use/">Privacy Policy</a></li>
-            <li><a href="https://www.usiu.ac.ke/terms-of-use/">Terms of Service</a></li>
-          </ul>
-        </div>
-
-        <!-- Follow Us -->
-        <div class="footer-column">
-          <h4>Follow Us</h4>
-          <div class="social-links">
-            <a href="https://www.facebook.com/USIUAFRICA/?ref=embed_page#" aria-label="Facebook" class="social-icon"><img src="./assets/icons/facebook icon.svg"  alt=""></a>
-            <a href="https://x.com/ExperienceUSIU?s=20" aria-label="Twitter" class="social-icon"><img src="./assets/icons/twitter icon.svg" alt=""></a>
-            <a href="https://www.instagram.com/usiuafrica?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram" class="social-icon"><img src="./assets/icons/instagram icon.svg" alt=""></a>
-            <a href="https://www.linkedin.com/school/united-states-international-university-africa/" aria-label="LinkedIn" class="social-icon"><img src="./assets/icons/linkedin icon.svg" alt=""></a>
-          </div>
-        </div>
-      </div>
-
-      <hr class="footer-divider" />
-
-      <div class="footer-bottom">
-        <small>© 2025 USIU Events Hub. All rights reserved.</small>
-      </div>
-    </footer>
-  </body>
+            <div class="footer-bottom">
+                <small>© 2025 USIU Events Hub. All rights reserved.</small>
+            </div>
+        </footer>
+    </body>
 </html>

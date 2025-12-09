@@ -1,158 +1,29 @@
+/*  DESIGN TOKENS / ROOT VARIABLES  */
+
 :root {
   --color-bg: #ffffff;
   --color-text: #1a1a1a;
   --color-primary: #002D72;
   --color-accent: #FFC72C;
+
   --spacing-1: 0.25rem;
   --spacing-2: 0.5rem;
   --spacing-3: 0.75rem;
   --spacing-4: 1rem;
   --spacing-5: 1.5rem;
   --spacing-6: 2rem;
+
   --radius-1: 4px;
   --radius-2: 8px;
+
   --font-base: 16px;
   --font-small: 0.875rem;
   --font-large: 1.25rem;
+
   --max-width: 72rem;
 }
 
-* { box-sizing: border-box; }
-
-html { font-size: var(--font-base); }
-
-body {
-  margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-  line-height: 1.6;
-}
-
-img { max-width: 100%; height: auto; }
-
-.skip-link {
-  position: absolute;
-  left: var(--spacing-4);
-  top: 0;
-  background: var(--color-primary);
-  color: #fff;
-  padding: var(--spacing-2) var(--spacing-3);
-  border-radius: var(--radius-1);
-  transform: translateY(-120%);
-  transition: transform .2s ease;
-}
-
-.skip-link:focus { transform: translateY(0); }
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-4);
-  padding: var(--spacing-4);
-  border-bottom: 1px solid #e5e7eb;
-}
-
-.brand a {
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: var(--font-large);
-}
-
-.brand svg { margin-right: var(--spacing-2); }
-
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: var(--spacing-4);
-}
-
-nav a {
-  color: var(--color-text);
-  text-decoration: none;
-  padding: var(--spacing-2) var(--spacing-3);
-  border-radius: var(--radius-1);
-  transition: background-color .2s ease;
-}
-
-nav a:hover,
-nav a:focus { background: #f3f4f6; }
-
-nav a[aria-current="page"] { font-weight: 700; }
-
-
-
-
-@media (max-width: 700px) {
-  #primary-nav { display: block; }
-  #primary-nav ul { flex-direction: column; padding-top: var(--spacing-3); }
-}
-
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: var(--spacing-5) var(--spacing-4);
-}
-
-section { margin-bottom: var(--spacing-6); }
-
-footer {
-  border-top: 1px solid #e5e7eb;
-  padding: var(--spacing-4);
-  text-align: center;
-  font-size: var(--font-small);
-}
-
-@media (min-width: 900px) {
-  .brand a { font-size: 1.5rem; }
-  nav a { font-size: 1rem; }
-}
-
-form { max-width: 40rem; }
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-2);
-  margin-bottom: var(--spacing-4);
-}
-
-label { font-weight: 600; }
-
-input,
-textarea,
-select {
-  width: 100%;
-  padding: var(--spacing-3);
-  border: 1px solid #d1d5db;
-  border-radius: var(--radius-1);
-  font: inherit;
-}
-
-input:focus,
-textarea:focus {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-.hint { color: #b91c1c; font-size: var(--font-small); }
-
-button[type="submit"] {
-  padding: var(--spacing-3) var(--spacing-4);
-  background: var(--color-primary);
-  color: #fff;
-  border: 0;
-  border-radius: var(--radius-1);
-}
-
-/* for the home page */
-/* ========== Base Reset & Typography ========== */
-
+/* Global reset: box model, remove default margin/padding */
 *,
 *::before,
 *::after {
@@ -161,12 +32,20 @@ button[type="submit"] {
   padding: 0;
 }
 
+/* Full-height layout */
 html,
 body {
   height: 100%;
 }
 
+/* Base font size */
+html {
+  font-size: var(--font-base);
+}
+
+/* Body base styles */
 body {
+  margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
   color: #1f2933;
@@ -174,38 +53,38 @@ body {
   line-height: 1.5;
 }
 
-/* Smooth text + better rendering */
+/* Smooth text rendering */
 body,
 button,
 input {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Utility container if needed later
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+/* Generic image behavior */
+img {
+  max-width: 100%;
+  height: auto;
 }
-*/
 
-/* ========== Links & Buttons ========== */
+/* GLOBAL LINKS & BUTTONS  */
 
+/* Default link reset */
 a {
   text-decoration: none;
   color: inherit;
 }
 
+/* Logo image inside links */
 a img {
-    width: 150px;
-    height: auto;
-    padding: 0;
-    margin: auto;
-    border: none;
-    border-radius: 0 0 7px 7px;
-
+  width: 150px;
+  height: auto;
+  padding: 0;
+  margin: auto;
+  border: none;
+  border-radius: 0 0 7px 7px;
 }
 
+/* Base button reset */
 button {
   font: inherit;
   border: none;
@@ -228,7 +107,9 @@ button {
   transition: background-color 0.18s ease, color 0.18s ease,
     box-shadow 0.18s ease, border-color 0.18s ease, transform 0.1s ease;
 }
-.logout-btn{
+
+/* Logout button base */
+.logout-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -242,13 +123,13 @@ button {
     opacity 0.2s ease, visibility 0.2s ease;
 }
 
+/* Hidden states toggled by the hidden attribute */
 .logout-btn[hidden],
 .login-btn[hidden] {
   display: none !important;
 }
 
-
-/* Primary (dark) button */
+/* Primary dark buttons (login/logout/register) */
 .login-btn,
 .logout-btn,
 .register-btn {
@@ -275,7 +156,7 @@ button {
   background-color: #f3f4f6;
 }
 
-/* ========== Skip Link (Accessibility) ========== */
+/*  SKIP LINK  */
 
 .skip-link {
   position: absolute;
@@ -286,16 +167,83 @@ button {
   color: #ffffff;
   border-radius: 0.5rem;
   z-index: 100;
+  transform: translateY(-120%);
   transition: top 0.2s ease;
 }
 
 .skip-link:focus {
   top: 1rem;
+  transform: translateY(0);
 }
 
-/* ========== Header ========== */
+/*  HEADER / NAV  */
 
-/* Base header layout */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Brand link */
+.brand a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--font-large);
+  color: #111827;
+}
+
+/* Optional SVG logo next to brand */
+.brand svg {
+  margin-right: var(--spacing-2);
+}
+
+/*  nav styling */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+nav a {
+  color: var(--color-text);
+  text-decoration: none;
+  padding: var(--spacing-2) var(--spacing-3);
+  border-radius: var(--radius-1);
+  transition: background-color .2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+  background: #f3f4f6;
+}
+
+nav a[aria-current="page"] {
+  font-weight: 700;
+}
+
+/* Small screen behavior for  primary nav */
+@media (max-width: 700px) {
+  #primary-nav {
+    display: block;
+  }
+
+  #primary-nav ul {
+    flex-direction: column;
+    padding-top: var(--spacing-3);
+  }
+}
+
+/*  SITE HEADER / PRIMARY NAV  */
+
+/* Main site header wrapper */
 .site-header {
   max-width: 1200px;
   margin: 0 auto;
@@ -305,21 +253,13 @@ button {
   gap: 2rem;
 }
 
-/* Brand */
-.brand a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  color: #111827; /* USIU-ish blue */
-}
-
+/* Brand logo size inside header */
 .brand img {
   height: 40px;
   width: auto;
 }
 
-/* Hamburger button */
+/* Hamburger button for mobile nav */
 .menu-toggle {
   display: inline-flex;
   flex-direction: column;
@@ -333,6 +273,7 @@ button {
   cursor: pointer;
 }
 
+/* Hamburger bars */
 .menu-bar {
   display: block;
   width: 22px;
@@ -340,9 +281,8 @@ button {
   background-color: #333;
   border-radius: 999px;
 }
-/* Navigation */
 
-/* Horizontal list on desktop */
+/* Primary nav list (.primary-nav) */
 .primary-nav ul {
   list-style: none;
   display: flex;
@@ -351,25 +291,28 @@ button {
   padding: 0;
 }
 
+/* Primary nav links */
 .primary-nav a {
   text-decoration: none;
   color: #111827;
   font-weight: 600;
 }
 
+/* Current page indicator */
 .primary-nav a[aria-current="page"] {
-  border-bottom: 2px solid #111827; /* accent underline */
+  border-bottom: 2px solid #111827;
 }
 
-/* Auth buttons */
+/* Auth buttons container on header */
 .auth-buttons {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  min-width: 120px; /* Prevent layout shift */
+  min-width: 120px;
   justify-content: flex-end;
 }
 
+/* Login/logout tweaks */
 .login-btn,
 .logout-btn {
   padding: 0.4rem 0.9rem;
@@ -389,19 +332,16 @@ button {
   border-color: #002060;
 }
 
-/* --- MOBILE: hide nav items inside the hamburger --- */
+/*  Mobile nav behavior  */
 @media (max-width: 768px) {
-  /* Show hamburger, hide desktop nav layout */
   .menu-toggle {
     display: inline-flex;
   }
 
-  /* Make header items align nicely */
   .site-header {
     position: relative;
   }
 
-  /* Hide nav by default */
   .primary-nav {
     position: absolute;
     top: 100%;
@@ -421,7 +361,6 @@ button {
     z-index: 50;
   }
 
-  /* Vertical list when opened */
   .primary-nav ul {
     flex-direction: column;
     padding: 0.75rem 1rem 1rem;
@@ -429,25 +368,22 @@ button {
   }
 
   .primary-nav.is-open {
-    max-height: 400px; /* large enough for all items */
+    max-height: 400px;
     opacity: 1;
     transform: scaleY(1);
   }
 
-  /* Optionally shrink brand text on mobile */
   .brand a {
     font-size: 0.95rem;
   }
 }
 
-/* --- DESKTOP: show nav, center it, hide hamburger --- */
+/* Desktop nav behavior  */
 @media (min-width: 769px) {
   .menu-toggle {
     display: none;
   }
 
-  /* Center nav like previous version:
-     Brand | Nav (center flex-grow) | Auth */
   .primary-nav {
     flex: 1;
     display: flex;
@@ -455,17 +391,78 @@ button {
   }
 }
 
+/* Slightly bigger brand/nav text on large screens */
+@media (min-width: 900px) {
+  .brand a {
+    font-size: 1.5rem;
+  }
 
-/* ========== Main Layout ========== */
+  nav a {
+    font-size: 1rem;
+  }
+}
 
+/*  MAIN LAYOUT / HERO / STATS / FEATURED  */
+
+/* Main wrapper for primary content  */
 main {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 1.5rem 3rem;
 }
 
-/* ========== Hero Section ========== */
+/*  section spacing  */
+section {
+  margin-bottom: var(--spacing-6);
+}
 
+/* Simple global footer  */
+footer {
+  border-top: 1px solid #e5e7eb;
+  padding: var(--spacing-4);
+  text-align: center;
+  font-size: var(--font-small);
+}
+
+/* Form width */
+form {
+  max-width: 40rem;
+}
+
+/* Global inputs/select/textarea  */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: var(--spacing-3);
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-1);
+  font: inherit;
+}
+
+/* Focus ring for plain inputs/textarea */
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Small error / hint text */
+.hint {
+  color: #b91c1c;
+  font-size: var(--font-small);
+}
+
+/* Default submit button */
+button[type="submit"] {
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--color-primary);
+  color: #fff;
+  border: 0;
+  border-radius: var(--radius-1);
+}
+
+/* Hero section on home page */
 .hero {
   padding: 2rem 0 3rem;
 }
@@ -484,6 +481,7 @@ main {
   margin-bottom: 1.5rem;
 }
 
+/* Search bar container */
 .search-bar {
   max-width: 550px;
 }
@@ -510,8 +508,7 @@ main {
   background-color: #ffffff;
 }
 
-/* ========== Stats Section ========== */
-
+/* Stats panel under hero */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -545,7 +542,6 @@ main {
   color: #6b7280;
 }
 
-
 /* Home featured events image box */
 #home-featured-grid .event-image {
   width: 100%;
@@ -556,13 +552,12 @@ main {
   background-position: center;
 }
 
-
-/* ========== Featured Events ========== */
-
+/* Featured events section on home */
 .featured-events {
   margin-top: 0.5rem;
 }
 
+/* Section header row: title + button */
 .section-header {
   display: flex;
   align-items: center;
@@ -576,30 +571,36 @@ main {
   color: #111827;
 }
 
+/* 4-column grid of event cards on home */
 .event-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
 }
 
-/* Event Card */
+/*  SHARED CARD / EVENT STRUCTURE  */
 
+/* Event card */
 .event-card {
   background-color: #ffffff;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.03);
+  padding: 1.5rem 1.75rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: stretch;
+  overflow: hidden;
 }
 
-/* Top "image" placeholder */
+/* Top image placeholder (used in some grids) */
 .event-image {
   background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
   height: 120px;
 }
 
-/* Content */
+/* Inner content for home cards */
 .event-content {
   padding: 1.1rem 1.1rem 1.2rem;
   display: flex;
@@ -607,12 +608,14 @@ main {
   gap: 0.75rem;
 }
 
+/* Title inside event card */
 .event-card h4 {
   font-size: 0.98rem;
   font-weight: 600;
   color: #111827;
 }
 
+/* Meta info list inside cards */
 .event-meta {
   list-style: none;
   font-size: 0.8rem;
@@ -630,12 +633,13 @@ main {
   color: #9ca3af;
 }
 
+/* Register button inside card */
 .register-btn {
   margin-top: 0.6rem;
   width: 100%;
 }
 
-/* ========== Footer ========== */
+/*  SITE FOOTER  */
 
 .site-footer {
   max-width: 1200px;
@@ -665,6 +669,7 @@ main {
   color: #111827;
   margin-bottom: 0.4rem;
 }
+
 .footer-brand-logo img{
   position: relative;
   right: 60px;
@@ -679,9 +684,7 @@ main {
   max-width: 260px;
   color: #6b7280;
   line-height: 1.6;
-  
 }
-
 
 .footer-column h4 {
   font-size: 0.9rem;
@@ -709,7 +712,6 @@ main {
 }
 
 /* Social icons */
-
 .social-links {
   display: flex;
   flex-wrap: wrap;
@@ -740,7 +742,6 @@ main {
 }
 
 /* Divider + bottom row */
-
 .footer-divider {
   border: none;
   border-top: 1px solid #e5e7eb;
@@ -754,7 +755,6 @@ main {
 }
 
 /* Responsive footer */
-
 @media (max-width: 992px) {
   .footer-main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -780,9 +780,7 @@ main {
   }
 }
 
-
-
-/* ---------- Events page layout ---------- */
+/*  EVENTS PAGE (LIST VIEW)  */
 
 body[data-page="events"] {
   background-color: #f6f7fb;
@@ -792,7 +790,7 @@ body[data-page="events"] {
   min-height: 100vh;
 }
 
-/* Title + description at the top */
+/* Title & description at the top of events page */
 .events-hero {
   padding: 3rem 1.5rem 1rem;
   display: flex;
@@ -817,14 +815,14 @@ body[data-page="events"] {
   color: #6b7280;
 }
 
-/* Main shell that holds filters + list */
+/* Shell for filters & event list */
 .events-shell {
   max-width: 1100px;
   margin: 0 auto 4rem;
   padding: 0 1.5rem 4rem;
 }
 
-/* Top bar: filters on the left, search on the right */
+/* Top toolbar: filters & search */
 .events-toolbar {
   display: flex;
   align-items: center;
@@ -835,7 +833,7 @@ body[data-page="events"] {
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* Category filter chips */
+/* Category filter */
 .events-filters {
   display: flex;
   flex-wrap: wrap;
@@ -898,15 +896,14 @@ body[data-page="events"] {
   border: 0;
 }
 
-/* "Showing X events" line */
+/* event-counts in a line */
 .events-count {
   margin: 1rem 0 1.25rem;
   font-size: 0.8rem;
   color: #6b7280;
 }
 
-/* ---------- Event cards ---------- */
-
+/* Events list (stacked cards) */
 .events-list {
   display: flex;
   flex-direction: column;
@@ -914,20 +911,7 @@ body[data-page="events"] {
   padding-bottom: 3rem;
 }
 
-/* Card container */
-.event-card {
-  background-color: #ffffff;
-  border-radius: 4px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.03);
-  padding: 1.5rem 1.75rem;
-  display: flex;          /* side-by-side layout */
-  flex-direction: row;    /* image + info in a row */
-  gap: 1.5rem;
-  align-items: stretch;
-}
-
-/* Thumbnail: keep image inside its zone */
+/* Thumbnail area for event image */
 .event-thumb {
   position: relative;
   overflow: hidden;
@@ -942,19 +926,19 @@ body[data-page="events"] {
 .event-thumb img {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* fill and crop nicely */
+  object-fit: cover;
   display: block;
 }
 
-/* Content column */
+/* Content column for list cards */
 .event-card-body {
-  flex: 1;               /* text area takes the remaining space */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-/* Header: category + title */
+/* Header: category & title */
 .event-card-header {
   margin-bottom: 0.4rem;
 }
@@ -977,7 +961,7 @@ body[data-page="events"] {
   color: #374151;
 }
 
-/* Meta list */
+/* Meta list below title */
 .event-meta-list {
   list-style: none;
   padding: 0;
@@ -989,7 +973,7 @@ body[data-page="events"] {
   color: #6b7280;
 }
 
-/* Description + price */
+/* Description & price */
 .event-description {
   margin: 0 0 0.4rem;
   font-size: 0.82rem;
@@ -1040,7 +1024,8 @@ body[data-page="events"] {
 .btn-primary:hover {
   background-color: #020617;
 }
-/* ---------- Gallery Grid ---------- */
+
+/*  GALLERY GRID  */
 
 .gallery-section {
   padding: 40px 20px;
@@ -1055,8 +1040,8 @@ body[data-page="events"] {
 }
 
 .gallery-grid img {
-  width: 30%; /* 3 per row */
-  aspect-ratio: 1/1; /* makes them perfect squares */
+  width: 30%;          /* 3 per row */
+  aspect-ratio: 1/1;   /* perfect squares */
   object-fit: cover;
   border-radius: 8px;
   transition: transform 0.3s ease, opacity 0.3s ease;
@@ -1067,54 +1052,20 @@ body[data-page="events"] {
   opacity: 0.9;
 }
 
-/* Mobile responsiveness */
+/* Gallery responsiveness */
 @media (max-width: 768px) {
   .gallery-grid img {
-    width: 45%; /* 2 per row on tablets */
+    width: 45%;        /* 2 per row on tablets */
   }
 }
 
 @media (max-width: 480px) {
   .gallery-grid img {
-    width: 100%; /* 1 per row on phones */
+    width: 100%;       /* 1 per row on phones */
   }
 }
 
-
-/* ---------- Responsive adjustments ---------- */
-
-@media (max-width: 768px) {
-  .events-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .events-search {
-    width: 100%;
-  }
-
-  .events-search input[type="search"] {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .event-card {
-    flex-direction: column;
-  }
-
-  .event-thumb {
-    width: 100%;
-    min-height: 160px;
-  }
-
-  .event-actions {
-    flex-wrap: wrap;
-  }
-}
-
-
-
-/* ========== Responsive Styles ========== */
+/*  SHARED RESPONSIVE ADJUSTMENTS  */
 
 /* Medium screens (tablets, small laptops) */
 @media (max-width: 992px) {
@@ -1190,14 +1141,44 @@ body[data-page="events"] {
     position: relative;
     right: 0;
   }
+
   .footer-brand-logo span {
     position: relative;
     right: 0;
   }
-
 }
 
-/* ---------- Event registration page ---------- */
+/* Events list specific responsive */
+@media (max-width: 768px) {
+  .events-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .events-search {
+    width: 100%;
+  }
+
+  .events-search input[type="search"] {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .event-card {
+    flex-direction: column;
+  }
+
+  .event-thumb {
+    width: 100%;
+    min-height: 160px;
+  }
+
+  .event-actions {
+    flex-wrap: wrap;
+  }
+}
+
+/* EVENT REGISTRATION PAGE */
 
 .register-page {
   min-height: 100vh;
@@ -1241,7 +1222,7 @@ body[data-page="events"] {
   color: #6b7280;
 }
 
-/* Layout */
+/* Layout (form & summary) */
 .register-layout {
   max-width: 1100px;
   margin: 0 auto 4rem;
@@ -1257,6 +1238,7 @@ body[data-page="events"] {
   flex-direction: column;
 }
 
+/* Cards (register & summary) */
 .register-card,
 .summary-card {
   background-color: #ffffff;
@@ -1285,6 +1267,7 @@ body[data-page="events"] {
   margin-bottom: 1.5rem;
 }
 
+/* Form field wrapper (register forms) */
 .form-field {
   display: flex;
   flex-direction: column;
@@ -1367,30 +1350,18 @@ body[data-page="events"] {
   color: #e5e7eb;
 }
 
-/* Status message */
+/* Status message wrapper for register form */
 .form-status {
   margin: 0.5rem 0 1rem;
   font-size: 0.86rem;
 }
 
-.status-info {
-  color: #1d4ed8;
-}
-
-.status-success {
-  color: #15803d;
-}
-
-.status-error {
-  color: #b91c1c;
-}
-
-/* Submit button */
+/* Submit button wrapper */
 .register-submit-btn {
   margin-top: 0.25rem;
 }
 
-/* Summary card */
+/* Summary card text */
 .summary-card h2 {
   margin: 0 0 0.6rem;
   font-size: 1.1rem;
@@ -1430,7 +1401,7 @@ body[data-page="events"] {
   color: #6b7280;
 }
 
-/* Responsive */
+/* Responsive registration layout */
 @media (max-width: 900px) {
   .register-layout {
     grid-template-columns: minmax(0, 1fr);
@@ -1444,16 +1415,14 @@ body[data-page="events"] {
     grid-template-columns: minmax(0, 1fr);
   }
 }
- 
-/* ===========================
-   Contact page layout
-   =========================== */
 
+
+/* CONTACT PAGE LAYOUT */
 .contact-page {
   background-color: #f5f7fb;
 }
 
-/* Generic container for this page */
+/* Generic container for contact page */
 .contact-container {
   max-width: 1120px;
   margin: 0 auto;
@@ -1502,11 +1471,12 @@ body[data-page="events"] {
   color: #111827;
 }
 
-/* Form */
+/* Contact form card */
 .contact-form-card {
   align-self: start;
 }
 
+/* field-row */
 .field-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1514,7 +1484,11 @@ body[data-page="events"] {
   margin-bottom: 1rem;
 }
 
+/* field  */
 .field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
   margin-bottom: 1rem;
 }
 
@@ -1609,7 +1583,6 @@ body[data-page="events"] {
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  
 }
 
 .info-content {
@@ -1660,8 +1633,7 @@ body[data-page="events"] {
   text-decoration: underline;
 }
 
-/* Map card */
-/* Map card */
+/* Map card section */
 .contact-map-section {
   padding-bottom: 3rem;
 }
@@ -1670,7 +1642,7 @@ body[data-page="events"] {
   margin-top: 0.5rem;
 }
 
-/* Keep the light background around the map card */
+/* Light background around the map */
 .map-placeholder {
   margin-top: 1rem;
 }
@@ -1679,7 +1651,7 @@ body[data-page="events"] {
 .map-embed-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 45%;   /* approx. 16:9 aspect ratio */
+  padding-bottom: 45%;
   overflow: hidden;
   border-radius: 3px;
   background-color: #f3f4f6;
@@ -1692,8 +1664,7 @@ body[data-page="events"] {
   height: 100%;
 }
 
-
-/* Responsive adjustments */
+/* Responsive adjustments for contact page */
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: minmax(0, 1fr);
@@ -1709,10 +1680,7 @@ body[data-page="events"] {
   }
 }
 
-
-/* ======================
-   Event details modal
-   ====================== */
+/* EVENT DETAILS MODAL */
 
 .event-modal {
   position: fixed;
@@ -1822,11 +1790,7 @@ body[data-page="events"] {
   }
 }
 
-
-
-   /* Auth (Login / Register) pages */
-
-
+/* AUTH (LOGIN / REGISTER) PAGES */
 
 .auth-container {
   max-width: 420px;
@@ -1853,7 +1817,6 @@ body[data-page="events"] {
 
 .auth-main {
   padding-bottom: 3rem;
-  
 }
 
 .auth-card {
@@ -1870,6 +1833,7 @@ body[data-page="events"] {
   min-height: 1em;
 }
 
+/* Shared status colors */
 .status-info {
   color: #0b5394;
 }
@@ -1887,48 +1851,7 @@ body[data-page="events"] {
   cursor: wait;
 }
 
-/* Reuse .field, .field-row, etc. from contact page.
-   If they do not exist yet, keep these definitions: */
-
-.field-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.field {
-  margin-bottom: 1rem;
-}
-
-.field label {
-  display: block;
-  font-size: 0.8rem;
-  font-weight: 500;
-  margin-bottom: 0.35rem;
-  color: #4b5563;
-}
-
-.field input,
-.field textarea {
-  width: 100%;
-  border-radius: 3px;
-  border: 1px solid #e5e7eb;
-  padding: 0.55rem 0.7rem;
-  font-size: 0.9rem;
-  background-color: #f9fafb;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease,
-    background-color 0.15s ease;
-}
-
-.field input:focus,
-.field textarea:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
-  background-color: #ffffff;
-}
-
-/* Primary button */
+/* Primary auth button */
 .auth-primary-btn {
   display: inline-flex;
   align-items: center;
@@ -1996,7 +1919,12 @@ body[data-page="events"] {
 }
 
 .checkbox-label input[type="checkbox"] {
-  margin-top: 0.15rem;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: #111827;
+  flex-shrink: 0;
 }
 
 /* Password actions container */
@@ -2016,7 +1944,8 @@ body[data-page="events"] {
   font-size: 0.85rem;
   color: #4b5563;
   cursor: pointer;
-  user-select: none;
+  -webkit-user-select: none; 
+  user-select: none; 
   margin: 0;
 }
 
@@ -2038,7 +1967,7 @@ body[data-page="events"] {
   color: #111827;
 }
 
-/* Responsiveness */
+/* Auth page responsiveness */
 @media (max-width: 640px) {
   .auth-hero {
     padding: 2.5rem 0 0.75rem;
@@ -2053,9 +1982,7 @@ body[data-page="events"] {
   }
 }
 
-/* ======================
-   About Page Styles
-   ====================== */
+/*  ABOUT PAGE STYLES */
 
 body:has(.about-hero) {
   background-color: #ffffff;
@@ -2082,6 +2009,7 @@ body:has(.about-hero) {
   margin-bottom: 3rem;
 }
 
+/* Mission section (text + illustration) */
 .about-mission-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
