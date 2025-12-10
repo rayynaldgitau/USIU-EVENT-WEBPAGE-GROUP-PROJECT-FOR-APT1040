@@ -1057,9 +1057,8 @@ eventRegisterForm.addEventListener("submit", async (e) => {
   }
 
 
-    // =========================
+  
   // HOME PAGE (index.html)
-  // =========================
 
   const homeFeaturedGrid = document.getElementById("home-featured-grid");
   const homeSearchInput = document.getElementById("home-search-input");

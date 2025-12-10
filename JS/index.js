@@ -58,7 +58,7 @@ exports.mpesaStkPush = functions.https.onRequest(async (req, res) => {
     const timestamp = new Date()
       .toISOString()
       .replace(/[^0-9]/g, "")
-      .slice(0, 14); // YYYYMMDDHHMMSS
+      .slice(0, 14); 
 
     const password = Buffer.from(
       `${MPESA_SHORTCODE}${MPESA_PASSKEY}${timestamp}`
