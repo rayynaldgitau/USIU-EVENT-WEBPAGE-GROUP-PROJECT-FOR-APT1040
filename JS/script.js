@@ -42,7 +42,7 @@ async function startMpesaPayment({ amount, phone, eventId, eventTitle, ticketCod
     );
   }
 
-  return data.data; // MerchantRequestID, CheckoutRequestID, CustomerMessage...
+  return data.data; 
 }
 
 
@@ -54,7 +54,7 @@ function sendTicketEmailWithEmailJS({ name, email, ev, ticketCode }) {
     return Promise.resolve();
   }
 
-  // Configure your EmailJS service/template/public key here
+  
   const SERVICE_ID = "service_03hfprr";
   const TEMPLATE_ID = "template_2csh4gj";
   const PUBLIC_KEY = "ZPs-uhpAwpEvsD2rx";
@@ -62,7 +62,7 @@ function sendTicketEmailWithEmailJS({ name, email, ev, ticketCode }) {
   try {
     emailjs.init(PUBLIC_KEY);
   } catch (e) {
-    // init might have been called before; safe to ignore
+    
   }
 
   const templateParams = {
@@ -125,7 +125,7 @@ if (form) {
   });
 }
 
-// FIREBASE IMPORTS (USING SEPARATE CONFIG FILE)
+// FIREBASE IMPORTS 
 
 import { auth, storage, db } from "./firebaseConfig.js";
 
@@ -156,7 +156,7 @@ import {
   updateDoc,
 } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-// Simple admin list by email
+
 const ADMIN_EMAILS = ["admin@usiu.ac.ke"];
 
 // HELPER FUNCTIONS
@@ -232,7 +232,7 @@ async function uploadEventImage(file, eventId) {
   return await getDownloadURL(fileRef);
 }
 
-// Get query parameter (for eventRegister.html?id=...)
+// Get query parameter
 function getQueryParam(name) {
   const params = new URLSearchParams(window.location.search);
   return params.get(name);
@@ -431,7 +431,7 @@ window.addEventListener("DOMContentLoaded", () => {
       showStatus(addEventStatus, "Creating event…", "info");
 
       try {
-        // Step 1: create event document without imageUrl
+        //  create event document without imageUrl
         const docRef = await addDoc(collection(db, "events"), {
           title,
           description,
@@ -444,7 +444,7 @@ window.addEventListener("DOMContentLoaded", () => {
           createdAt: serverTimestamp(),
         });
 
-        // Step 2: upload image and update event
+        //  upload image and update event
         const imageUrl = await uploadEventImage(file, docRef.id);
         await updateDoc(doc(db, "events", docRef.id), { imageUrl });
 
@@ -458,9 +458,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    // ======================
+
   // Event details modal
-  // ======================
 
   const eventModal = document.getElementById("event-modal");
   const eventModalImage = document.getElementById("event-modal-image");
@@ -553,7 +552,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // EVENTS LIST PAGE (EventsListView.html)
+  // EVENTS LIST PAGE
 
   const eventsList = document.getElementById("events-list");
   const filterButtons = document.querySelectorAll(".filter-chip");
@@ -578,7 +577,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Build one event card (structure matches the CSS you are using)
+  // Build one event card 
   function buildEventCard(ev) {
     const article = document.createElement("article");
     article.className = "event-card";
@@ -667,7 +666,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  // Render a list of events (after filtering/searching)
+  // Render a list of events
   function renderEvents(events) {
     if (!eventsList) return;
 
@@ -693,7 +692,7 @@ window.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const activeCategory = getActiveCategory(); // "all", "Academic", ...
+    const activeCategory = getActiveCategory(); 
     const searchTerm = (searchInput?.value || "").trim().toLowerCase();
 
     let filtered = allEvents.slice();
@@ -706,7 +705,7 @@ window.addEventListener("DOMContentLoaded", () => {
       );
     }
 
-    // Search filter (title, description, location)
+    // Search filter 
     if (searchTerm) {
       filtered = filtered.filter((ev) => {
         const title = (ev.title || "").toLowerCase();
@@ -928,12 +927,12 @@ eventRegisterForm.addEventListener("submit", async (e) => {
     }
   }
 
-  // Basic ticket code – you can customize if you like
+  // Basic ticket code generation
   const ticketCode = `USIU-${eventId
     .slice(0, 4)
     .toUpperCase()}-${Date.now().toString().slice(-4)}`;
 
-  // ---------- 1) Try to start M-Pesa (only for paid events) ----------
+  // MPESA PAYMENT FLOW
   if (!ev.isFree) {
     try {
       showStatus(
@@ -971,7 +970,7 @@ eventRegisterForm.addEventListener("submit", async (e) => {
     );
   }
 
-  // ---------- 2) Save registration in Firestore (always) ----------
+  //  Save registration in Firestore 
   try {
     const paymentStatus = ev.isFree
       ? "not_required"
@@ -996,7 +995,7 @@ eventRegisterForm.addEventListener("submit", async (e) => {
       paymentStatus,
     });
 
-    // ---------- 3) Send ticket email ----------
+    // Send ticket email
     try {
       await sendTicketEmailWithEmailJS({
         name,
@@ -1009,7 +1008,7 @@ eventRegisterForm.addEventListener("submit", async (e) => {
       // do not fail the whole flow if email fails
     }
 
-    // ---------- 4) Final UI message ----------
+    // Final UI message
     if (ev.isFree) {
       showStatus(
         eventRegisterStatus,
@@ -1213,7 +1212,7 @@ eventRegisterForm.addEventListener("submit", async (e) => {
 
   // Load events for home page
   async function loadHomePageData() {
-    if (!homeFeaturedGrid) return; // not on home page
+    if (!homeFeaturedGrid) return;
 
     try {
       const qEvents = query(

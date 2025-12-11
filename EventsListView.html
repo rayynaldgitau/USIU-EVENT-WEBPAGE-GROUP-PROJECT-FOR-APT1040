@@ -10,6 +10,7 @@
       href="https://www.usiu.ac.ke/assets/image/usiu-logo.png"
     />
     <link rel="stylesheet" href="./css/styles.css" />
+    <script type="module" defer src="./JS/reducedMotion.js"></script>
     <script type="module" defer src="./JS/script.js"></script>
   </head>
 
@@ -69,11 +70,11 @@
   <section class="events-shell" aria-labelledby="events-heading">
     <div class="events-toolbar">
       <div class="events-filters" role="tablist" aria-label="Filter events by category">
-        <button class="filter-chip is-active" type="button" data-filter="all">All</button>
-        <button class="filter-chip" type="button" data-filter="Academic">Academic</button>
-        <button class="filter-chip" type="button" data-filter="Social">Social</button>
-        <button class="filter-chip" type="button" data-filter="Sports">Sports</button>
-        <button class="filter-chip" type="button" data-filter="Club">Club</button>
+        <button class="filter-chip is-active" type="button" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button class="filter-chip" type="button" data-filter="Academic" role="tab" aria-selected="false">Academic</button>
+        <button class="filter-chip" type="button" data-filter="Social" role="tab" aria-selected="false">Social</button>
+        <button class="filter-chip" type="button" data-filter="Sports" role="tab" aria-selected="false">Sports</button>
+        <button class="filter-chip" type="button" data-filter="Club" role="tab" aria-selected="false">Club</button>
       </div>
 
       <form class="events-search" role="search">

@@ -1032,6 +1032,22 @@ body[data-page="events"] {
   padding: 40px 20px;
   text-align: center;
 }
+/* Normal behaviour */
+.gallery-grid img {
+  transition: transform 180ms ease-out;
+}
+
+/* Users who prefer reduced motion */
+html.reduce-motion .gallery-grid img {
+  transition: none;
+}
+
+/* Optional: globally soften animations */
+html.reduce-motion * {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+}
+
 
 .gallery-grid {
   display: flex;

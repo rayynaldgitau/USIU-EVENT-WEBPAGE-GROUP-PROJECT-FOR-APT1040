@@ -5,7 +5,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth
 import { getStorage } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-storage.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
 
-// Your Firebase configuration
+//  Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDrvrhISJEB_TmHm0GlqmpjvP1haFYFfVQ",
   authDomain: "usiueventswebpagebackend.firebaseapp.com",
