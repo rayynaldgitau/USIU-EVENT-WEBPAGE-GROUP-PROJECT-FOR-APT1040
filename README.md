@@ -252,10 +252,6 @@ Extras:
 
 ---
 
-## License
-
-
----
 
 ## Where to look next (helpful links)
 
